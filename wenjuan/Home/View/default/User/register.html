@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{$pageTitle}</title>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/jquery.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/common.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/msDialog.js"></script>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/common.css" type="text/css"/>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/main.css" type="text/css"/>
+</head>
+<body>
+<form id="registerForm">
+	<input name="member_name" placeholder="请输入用户名" type="text" maxlength="32">
+	<input name="member_phone" placeholder="请输入手机号码" type="text" maxlength="11">
+	<input name="email" placeholder="请输入邮箱地址" type="text" maxlength="50">
+	<input name="password" placeholder="请输入密码" type="password" maxlength="50">
+	<input name="password2" placeholder="请输入确认密码" type="password" maxlength="50">
+	<div class="bmit">
+		<input  name="" type="button" id="btnRegister"  value=" 注 册 ">
+	</div>
+</form>
+<script>
+//自动跳转
+function callback(){
+    location.href = '/';
+}
+$('#btnRegister').click(function () {
+    	
+        var mobile = $('#registerForm input[name="member_phone"]').val();
+        if (!bzUtil.isMobile(mobile)) {
+            bzUtil.setTimeAlert('请输入正确的手机号码');
+            return false;
+        }
+        $.ajax({
+            url: '/user/register',
+            data: $('#registerForm').serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function (resp) {
+                if (resp.status == 1) {
+                    bzUtil.setTimeAlert('注册成功',callback);
+                }
+                if (resp.message) {
+                    bzUtil.setTimeAlert(resp.message);
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>
