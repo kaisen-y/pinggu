@@ -2,9 +2,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>{$pageTitle}</title>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/jquery.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/common.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/msDialog.js"></script>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/common.css" type="text/css"/>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/main.css" type="text/css"/>
 </head>
 <body>
+<a href="/questionnaire/create">新增评估项目</a>
+<br />
+<br />
+<foreach name="list" item="vo" >
+	<a href="/questionnaire/wenjuan/id/{$vo.wj_id}">{$vo.wj_name}</a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/{$vo.wj_id}">修改</a> &nbsp; &nbsp; <button onclick="delWj({$vo.wj_id})"> 删 除 </button><br/>
+</foreach>
 
+<script>
+    function delWj(id) {
+        if(confirm("确认删除?")){
+            $.ajax({
+                url:'/questionnaire/delete',
+                type:'post',
+                data:'wj_id='+id,
+                dataType:'json',
+                success:function(resp){
+                    if(resp){
+                        location.href='/questionnaire';
+                    }
+                }
+            });
+        }
+        
+    }
+</script>
 </body>
 </html>

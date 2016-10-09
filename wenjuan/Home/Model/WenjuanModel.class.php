@@ -33,6 +33,14 @@ class WenjuanModel extends Model {
 		return $this->find($id);
 	}
 	
+	public function getlist($uid, $where=array(), $start=0, $length=10){
+		if (empty($where)){
+			$where['uid'] = $uid;
+		}
+		$list = $this->where($where)->limit($start,$length)->select();
+		return $list;
+	}
+	
 	public function update($id,$data){
 		$ret = $this->where('wj_id='.$id)->save($data);
 		return array('status'=>$ret?SUCCESS:FAIL);

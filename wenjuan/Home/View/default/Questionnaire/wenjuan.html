@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{$pageTitle}</title>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/jquery.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/common.js"></script>
+<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/msDialog.js"></script>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/common.css" type="text/css"/>
+<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/main.css" type="text/css"/>
+</head>
+<body>
+<h2>{$wj_name}</h2>
+<a href="/questionnaire/addquestion/wj_id/{$wj_id}"> 新增问题 </a><br>
+<br>
+<form id="pgForm">
+<foreach name="qlist" item="vo" >
+<div id="qa{$vo.wjq_id}">
+	<h2>{$vo.wjq_question}</h2> 
+	<input name="pingfen[{$vo.wjq_id}]" placeholder="评估打分" type="text" maxlength="50">
+	<a href="/questionnaire/editquestion/id/{$vo.wjq_id}">修改问题</a>
+	<button onclick="delQuestion({$vo.wjq_id})">删除</button><br>
+	<foreach name="vo.wjq_answer" item="va">
+		{$va} <notempty name="va"><br></notempty>
+	</foreach>
+</div>
+<br>
+</foreach>
+<input type="text" name="jielun" placeholder="结论" >
+<input type="hidden" name="wj_id" value="{$wj_id}" />
+<div class="bmit">
+		<input  name="" type="button" id="btnSubmit"  value=" 提 交  ">
+	</div>
+</form>
+<script>
+//自动跳转
+function callback(){
+    location.href = '/questionnaire';
+}
+$('#btnSubmit').click(function () {
+	
+    $.ajax({
+        url: '/questionnaire/',
+        data: $('#pgForm').serialize(),
+        type: 'post',
+        dataType: 'json',
+        success: function (resp) {
+            if (resp.status == 1) {
+                bzUtil.setTimeAlert('成功',callback);
+            }
+            if (resp.message) {
+                bzUtil.setTimeAlert(resp.message);
+            }
+        }
+    });
+
+});
+function delQuestion(id){
+	if(confirm("确认删除?")){
+        $.ajax({
+            url:'/questionnaire/delquestion',
+            type:'post',
+            data:'wjq_id='+id,
+            dataType:'json',
+            success:function(resp){
+                if(resp){
+                    $("#qa"+id).remove();
+                }
+            }
+        });
+    }
+}
+</script>
+</body>
+</html>

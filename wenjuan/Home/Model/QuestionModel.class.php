@@ -31,7 +31,7 @@ class QuestionModel extends Model {
 	public function getOne($id){
 		$ret = $this->find($id);
 		if($ret && $ret['wjq_question']){
-			$ret['answer'] = json_decode($ret['answer']);
+			$ret['wjq_answer'] = json_decode($ret['wjq_answer']);
 			return $ret;
 		}else{
 			return false;
@@ -39,7 +39,8 @@ class QuestionModel extends Model {
 	}
 	
 	public function update($id,$data){
-		$data['answer'] = json_encode($data['answer']);
+		$data['wjq_answer'] = json_encode($data['answer']);
+		unset($data['answer']);
 		$ret = $this->where('wjq_id='.$id)->save($data);
 		return array('status'=>$ret?SUCCESS:FAIL);
 	}
@@ -54,5 +55,19 @@ class QuestionModel extends Model {
 	 */
 	public function delBywjid($wjid){
 		return $this->where('wj_id='.$wjid)->delete();
+	}
+	
+	/**
+	 * 
+	 * @param int $wjid		//问卷ID
+	 */
+	public function getAllQuestion($wjid){
+		$list = $this->where('wj_id='.$wjid)->select();
+		if(is_array($list)){
+			foreach ($list as $k=>$v){
+				$list[$k]['wjq_answer'] = json_decode($v['wjq_answer']);
+			}
+		}
+		return $list;
 	}
 }

@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>{$pageTitle}</title>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/jquery.js"></script>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/common.js"></script>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/msDialog.js"></script>
-<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/common.css" type="text/css"/>
-<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/main.css" type="text/css"/>
+<title><?php echo ($pageTitle); ?></title>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
+<link rel="stylesheet" href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" type="text/css"/>
+<link rel="stylesheet" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" type="text/css"/>
 </head>
 <body>
 <form id="loginForm">
@@ -20,7 +20,7 @@
 <script>
 //自动跳转
 function callback(){
-    location.href = '/user';
+    location.href = '/';
 }
 $('#btnLogin').click(function () {
         $.ajax({
