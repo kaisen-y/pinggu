@@ -6,7 +6,7 @@ return array(
 	/* 模板相关配置 */
 	'TMPL_PARSE_STRING' => array(
 		'__STATIC__' 	=> __ROOT__ . '/Public/static',
-		'__IMG__'    	=> __ROOT__ . '/Public/img',
+		'__IMG__'    	=> __ROOT__ . '/Public/images',
 		'__CSS__'    	=> __ROOT__ . '/Public/css',
 		'__JS__'     	=> __ROOT__ . '/Public/js',
 		'__UPLOAD__'    => __ROOT__ . '/Public/upload',

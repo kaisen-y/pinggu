@@ -13,6 +13,9 @@ use Think\Controller;
 use Home\Model\WenjuanModel;
 use Home\Model\UserModel;
 use Home\Model\QuestionModel;
+use Home\Model\ResultModel;
+use Home\Model\CaregiversModel;
+use Home\Model\JiankangpingguModel;
 
 
 class QuestionnaireController extends BaseController {
@@ -188,18 +191,149 @@ class QuestionnaireController extends BaseController {
 		$data['pageTitle'] = $wenjuan['wj_name'];
 		$questionModel = new QuestionModel();
 		$data['qlist'] = $questionModel->getAllQuestion($id);
-		
+		$data['care_id'] = I('get.care_id');
 		$this->assign($data);
 		$this->display();
 		
 	}
 	
+	public function care(){
+		if(IS_GET){
+			$this->display();
+		}else{
+			$arr = array(
+				'name'				=> I('post.name'),
+				'sex'				=> I('post.sex'),
+				'brith'				=> I('post.brith'),
+				'nation'			=> I('post.nation'),
+				'origin'			=> I('post.origin'),
+				'religion'			=> I('post.religion'),
+				'credentials_type'	=> I('post.credentials_type'),
+				'credentials_no'	=> I('post.credentials_no'),
+				'ss_card'			=> I('post.ss_card'),
+				'education'			=> I('post.education'),
+				'marriage'			=> I('post.marriage'),
+				'careers'			=> I('post.careers'),
+				'registry_add'		=> I('post.registry_add'),
+				'address'			=> I('post.address'),
+				'add_hospital'		=> I('post.add_hospital'),
+				'hospital'			=> I('post.hospital'),
+				'tellphone'			=> I('post.tellphone'),
+				'mobile'			=> I('post.mobile'),
+				'disability_no'		=> I('post.disability_no'),
+				'disability_type'	=> I('post.disability_type'),
+				'disability_level'	=> I('post.disability_level'),
+				'disability_time'	=> I('post.disability_time'),
+				'disability_cause'	=> I('post.disability_cause'),
+				'jjlx_name'			=> I('post.jjlx_name'),
+				'jjlx_guanxi'		=> I('post.jjlx_guanxi'),
+				'jjlx_phone'		=> I('post.jjlx_phone'),
+				'jjlx_email'		=> I('post.jjlx_email'),
+				'jjlx_addr'			=> I('post.jjlx_addr'),
+				'jjlx_remark'		=> I('post.jjlx_remark'),
+				'jingjilaiyuan'		=> join(',', I('post.jingjilaiyuan')),
+				'jingjitiaojian'	=> join(',', I('post.jingjitiaojian')),
+				'juzhu'				=> join(',', I('post.juzhu')),
+				'anyang'			=> join(',', I('post.anyang')),
+				'zhufang'			=> join(',', I("post.zhufang")),
+				'xiuxian'			=> join(',', I('post.xiuxian')),
+				'wenhuaxuqiu'		=> join(',', I('post.wenhuaxuqiu')),
+				'teshugongxian'		=> join(',', I('post.teshugongxian')),
+				'remark'			=> I('post.remark')
+			);
+			$caregivers = new CaregiversModel();
+			$resp = $caregivers->create($arr);
+			if($resp['data']){
+				redirect('/questionnaire/jkpg/care_id/'.$resp['data']);
+			}
+		}
+	}
+	
+	public function jkpg(){
+		if(IS_GET){
+			if(intval(I('get.care_id')) < 1){
+				redirect('/questionnaire/care');
+			}
+			$data['care_id'] = I('care_id');
+			$this->assign($data);
+			$this->display();
+		}else{
+			if(intval(I('post.care_id')) < 1){
+				redirect('/questionnaire/care');
+			}
+			$arr = array(
+					'care_id'			=> I('post.care_id'),
+					'height'			=> I("post.height"),
+					'weight'			=> I('post.weight'),
+					'neck'				=> I('post.neck'),
+					'waist'				=> I('post.waist'),
+					'temperature'		=> I("post.temperature"),
+					'maibo'				=> I('post.maibo').'次/分    '.I('post.maibokl'),
+					'xuetang'			=> I('post.xuetang').' '.I('post.xuetangdes'),
+					'xueya'				=> I('post.xueya').' 左:'.I('post.xueya_left_l').'/'.I('post.xueya_left_r').'mmHg 右:'.I('post.xueya_right_l').'/'.I('post.xueya_right_r').'mmHg',
+					'xuezhi'			=> '胆固醇：'.I('post.xuezhi_d').',甘油三酯：'.I('post.xuezhi_g').',高密度脂蛋白：'.I('post.xuezhi_gz').',低密度脂蛋白：'.I('post.xuezhi_dz').',报告日期：'.I('post.xuezhi_date'),
+					'xiyan'				=> I('post.xiyan').' '.I("post.xiyan_times")."支/天",
+					'yinshixiguan'		=> join(',', I('post.yinshixiguan')),
+					'zaocan'			=> join(',', I('post.zaocan')),
+					'wucan'				=> join(',', I('post.wucan')),
+					'wancan'			=> join(',', I('post.wancan')),
+					'jiacan'			=> join(',', I('post.jiacan')),
+					'yinshui'			=> join(',', I('post.yinshui')),
+					'peican'			=> I('post.peican'),
+					'yudongfangshi'		=> join(',', I('post.yudongfangshi')),
+					'yundongpinglv'		=> '每周运动：'.I('post.zhoupl').'次,每次：'.I('post.timesmin').'分钟',
+					'yundonghou'		=> join(',', I('post.yundonghou')),
+					'shuimianqingkuang' => join(',', I("post.shuimianqingkuang")),
+					'shuimianzhiliang'	=> I('post.shuimianzhiliang'),
+					'jibing'			=> join(',', I('post.jibing')),
+					'muqian'			=> join(',', I('post.muqian')),
+					'miaoshu'			=> I("post.miaoshu"),
+					'zhiliao'			=> join(',', i('post.zhiliao'))
+			);
+			$yachang = I("post.yachang")?'压疮（部位:）'.I('post.yachang'):"";
+			$jrweisuo = I('post.jrweisuo')?"肌肉萎缩（部位:）".I('post.jrweisuo'):"";
+			$qita = I('post.qita')?'其他:'.I('post.qita'):'';
+			$arr['bingfa'] = $yachang.' '.$jrweisuo.' '.$qita;
+			$jkpg = new JiankangpingguModel();
+			$resp = $jkpg->create($arr);
+			if($resp['data']){
+				redirect('/questionnaire/jkpg/care_id/'.$arr['care_id']);
+			}
+		}
+	}
+	
 	public function jieguo(){
 		if(IS_POST){
-			$result = M('pingguresult');
+			$result = new ResultModel();
+			$wj_id  = I('post.wj_id');
+			$pg_qa  = I('post.pg_qa');
+			$pingfen = I('post.pingfen');
+			$pg_sum = array_sum($pingfen);
+			if(intval($wj_id) > 0){
+				$wj_ids = array_keys(I('post.pingfen'));
+				$questionModel = new QuestionModel();
+				$qlist = $questionModel->getAllQuestion($wj_id);
+				foreach ($qlist as $k=>$v){
+					if($pingfen[$v['wjq_id']]){
+						$pg_qa[] = array(
+							'question' 	=> $v['wjq_question'],
+							'answer'	=> $v['wjq_answer'],
+							'defen'		=> $pingfen[$v['wjq_id']]
+						);
+					}
+				}
+			}
 			$data = array(
-				
+					'care_id'			=> I('post.care_id'),
+					'wj_id'				=> $wj_id,
+					'pg_qa'				=> $pg_qa,
+					'pg_sum'			=> $pg_sum,
+					'pg_result'			=> I('post.jielun'),
+					'remark'			=> I('post.remark'),
 			);
+			
+			$resp = $result->create($data);
+			echo json_encode($resp);
 		}else{
 			redirect('/questionnaire');
 		}

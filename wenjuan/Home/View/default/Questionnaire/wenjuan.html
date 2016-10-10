@@ -17,7 +17,9 @@
 <foreach name="qlist" item="vo" >
 <div id="qa{$vo.wjq_id}">
 	<h2>{$vo.wjq_question}</h2> 
+	<notempty name="care_id">
 	<input name="pingfen[{$vo.wjq_id}]" placeholder="评估打分" type="text" maxlength="50">
+	</notempty>
 	<a href="/questionnaire/editquestion/id/{$vo.wjq_id}">修改问题</a>
 	<button onclick="delQuestion({$vo.wjq_id})">删除</button><br>
 	<foreach name="vo.wjq_answer" item="va">
@@ -26,11 +28,16 @@
 </div>
 <br>
 </foreach>
+<notempty name="care_id">
 <input type="text" name="jielun" placeholder="结论" >
+<input type="text" name="remark" placeholder="备注" />
 <input type="hidden" name="wj_id" value="{$wj_id}" />
+<input type="hidden" name="care_id" value="{$care_id}" />
+
 <div class="bmit">
-		<input  name="" type="button" id="btnSubmit"  value=" 提 交  ">
-	</div>
+	<input  name="" type="button" id="btnSubmit"  value=" 提 交  ">
+</div>
+</notempty>
 </form>
 <script>
 //自动跳转
@@ -40,7 +47,7 @@ function callback(){
 $('#btnSubmit').click(function () {
 	
     $.ajax({
-        url: '/questionnaire/',
+        url: '/questionnaire/jieguo',
         data: $('#pgForm').serialize(),
         type: 'post',
         dataType: 'json',

@@ -16,17 +16,20 @@
 <form id="pgForm">
 <?php if(is_array($qlist)): foreach($qlist as $key=>$vo): ?><div id="qa<?php echo ($vo["wjq_id"]); ?>">
 	<h2><?php echo ($vo["wjq_question"]); ?></h2> 
-	<input name="pingfen[<?php echo ($vo["wjq_id"]); ?>]" placeholder="评估打分" type="text" maxlength="50">
+	<?php if(!empty($care_id)): ?><input name="pingfen[<?php echo ($vo["wjq_id"]); ?>]" placeholder="评估打分" type="text" maxlength="50"><?php endif; ?>
 	<a href="/questionnaire/editquestion/id/<?php echo ($vo["wjq_id"]); ?>">修改问题</a>
 	<button onclick="delQuestion(<?php echo ($vo["wjq_id"]); ?>)">删除</button><br>
 	<?php if(is_array($vo["wjq_answer"])): foreach($vo["wjq_answer"] as $key=>$va): echo ($va); ?> <?php if(!empty($va)): ?><br><?php endif; endforeach; endif; ?>
 </div>
 <br><?php endforeach; endif; ?>
-<input type="text" name="jielun" placeholder="结论" >
+<?php if(!empty($care_id)): ?><input type="text" name="jielun" placeholder="结论" >
+<input type="text" name="remark" placeholder="备注" />
 <input type="hidden" name="wj_id" value="<?php echo ($wj_id); ?>" />
+<input type="hidden" name="care_id" value="<?php echo ($care_id); ?>" />
+
 <div class="bmit">
-		<input  name="" type="button" id="btnSubmit"  value=" 提 交  ">
-	</div>
+	<input  name="" type="button" id="btnSubmit"  value=" 提 交  ">
+</div><?php endif; ?>
 </form>
 <script>
 //自动跳转
@@ -36,7 +39,7 @@ function callback(){
 $('#btnSubmit').click(function () {
 	
     $.ajax({
-        url: '/questionnaire/',
+        url: '/questionnaire/jieguo',
         data: $('#pgForm').serialize(),
         type: 'post',
         dataType: 'json',
