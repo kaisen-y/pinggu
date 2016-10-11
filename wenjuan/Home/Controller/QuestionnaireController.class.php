@@ -32,7 +32,7 @@ class QuestionnaireController extends BaseController {
 		$wenjuanModel = new WenjuanModel();
 		
 		$list = $wenjuanModel->getlist($user['member_id']);
-		
+		$data['care_id'] = I('get.care_id');
 		$data['list'] = $list;
 		$data['pageTitle'] = '我创建的评估项目';
 		$this->assign($data);
@@ -301,7 +301,7 @@ class QuestionnaireController extends BaseController {
 			$jkpg = new JiankangpingguModel();
 			$resp = $jkpg->create($arr);
 			if($resp['data']){
-				redirect('/questionnaire/jkpg/care_id/'.$arr['care_id']);
+				redirect('/questionnaire?care_id='.$arr['care_id']);
 			}
 		}
 	}

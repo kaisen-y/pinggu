@@ -13,7 +13,7 @@
 <a href="/questionnaire/create">新增评估项目</a>
 <br />
 <br />
-<?php if(is_array($list)): foreach($list as $key=>$vo): ?><a href="/questionnaire/wenjuan/id/<?php echo ($vo["wj_id"]); ?>"><?php echo ($vo["wj_name"]); ?></a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/<?php echo ($vo["wj_id"]); ?>">修改</a> &nbsp; &nbsp; <button onclick="delWj(<?php echo ($vo["wj_id"]); ?>)"> 删 除 </button><br/><?php endforeach; endif; ?>
+<?php if(is_array($list)): foreach($list as $key=>$vo): ?><a href="/questionnaire/wenjuan/id/<?php echo ($vo["wj_id"]); ?>/care_id/<?php echo ($care_id); ?>"><?php echo ($vo["wj_name"]); ?></a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/<?php echo ($vo["wj_id"]); ?>">修改</a> &nbsp; &nbsp; <button onclick="delWj(<?php echo ($vo["wj_id"]); ?>)"> 删 除 </button><br/><?php endforeach; endif; ?>
 
 <script>
     function delWj(id) {

@@ -14,7 +14,7 @@
 <br />
 <br />
 <foreach name="list" item="vo" >
-	<a href="/questionnaire/wenjuan/id/{$vo.wj_id}">{$vo.wj_name}</a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/{$vo.wj_id}">修改</a> &nbsp; &nbsp; <button onclick="delWj({$vo.wj_id})"> 删 除 </button><br/>
+	<a href="/questionnaire/wenjuan/id/{$vo.wj_id}/care_id/{$care_id}">{$vo.wj_name}</a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/{$vo.wj_id}">修改</a> &nbsp; &nbsp; <button onclick="delWj({$vo.wj_id})"> 删 除 </button><br/>
 </foreach>
 
 <script>

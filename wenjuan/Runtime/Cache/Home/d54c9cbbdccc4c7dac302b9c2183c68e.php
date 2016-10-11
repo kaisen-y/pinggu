@@ -34,7 +34,7 @@
 <script>
 //自动跳转
 function callback(){
-    location.href = '/questionnaire';
+    location.href = '/questionnaire?care_id=<?php echo ($care_id); ?>';
 }
 $('#btnSubmit').click(function () {
 	

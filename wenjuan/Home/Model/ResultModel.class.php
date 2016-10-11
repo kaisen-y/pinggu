@@ -18,6 +18,7 @@ class ResultModel extends Model {
 					'pg_sum'			=> $data['pg_sum'],
 					'pg_result'			=> $data['pg_result'],
 					'remark'			=> $data['remark'],
+					'uid'				=> $data['uid'],
 					'addtime'			=> time()
 			);
 			$id = $this->add($arr);
