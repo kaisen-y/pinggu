@@ -60,7 +60,7 @@ class ResultModel extends Model {
 		$list = $this->where('care_id='.$care_id)->select();
 		if(is_array($list)){
 			foreach ($list as $k=>$v){
-				$list[$k]['pg_qa'] = json_decode($v['pg_qa']);
+				$list[$k]['pg_qa'] = json_decode($v['pg_qa'],true);
 			}
 		}
 		return $list;

@@ -37,7 +37,7 @@ class WenjuanModel extends Model {
 		if (empty($where)){
 			$where['uid'] = $uid;
 		}
-		$list = $this->where($where)->limit($start,$length)->select();
+		$list = $this->where($where)->limit($start,$length)->order('wj_id DESC')->select();
 		return $list;
 	}
 	

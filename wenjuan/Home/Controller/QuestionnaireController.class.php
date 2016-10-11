@@ -201,7 +201,11 @@ class QuestionnaireController extends BaseController {
 		if(IS_GET){
 			$this->display();
 		}else{
+
+			$userModel = new UserModel();
+			$user = $userModel->getUserSession();
 			$arr = array(
+				'uid'				=> $user['member_id'],
 				'name'				=> I('post.name'),
 				'sex'				=> I('post.sex'),
 				'brith'				=> I('post.brith'),
@@ -309,7 +313,7 @@ class QuestionnaireController extends BaseController {
 			$pg_qa  = I('post.pg_qa');
 			$pingfen = I('post.pingfen');
 			$pg_sum = array_sum($pingfen);
-			if(intval($wj_id) > 0){
+			if(intval($wj_id) > 0){//收集评估题目
 				$wj_ids = array_keys(I('post.pingfen'));
 				$questionModel = new QuestionModel();
 				$qlist = $questionModel->getAllQuestion($wj_id);
@@ -323,7 +327,11 @@ class QuestionnaireController extends BaseController {
 					}
 				}
 			}
+
+			$userModel = new UserModel();
+			$user = $userModel->getUserSession();
 			$data = array(
+					'uid'				=> $user['member_id'],
 					'care_id'			=> I('post.care_id'),
 					'wj_id'				=> $wj_id,
 					'pg_qa'				=> $pg_qa,
@@ -336,6 +344,45 @@ class QuestionnaireController extends BaseController {
 			echo json_encode($resp);
 		}else{
 			redirect('/questionnaire');
+		}
+	}
+	
+
+	public function mycare(){
+		$userModel = new UserModel();
+		$user = $userModel->getUserSession();
+		$crvs = new CaregiversModel();
+		$list = $crvs->getlist($user['member_id']);
+		$data['list'] = $list;
+		$data['pageTitle'] = '被评估者列表';
+		$this->assign($data);
+		$this->display();
+	}
+	
+	public function careinfo(){
+		$care_id = intval(I('get.care_id'));
+		if($care_id > 0){
+			$crvs = new CaregiversModel();
+			$care = $crvs->getOne($care_id);
+			$sex = array(1=>'男',2=>'女',3=>'其他');
+			$marr= array(1=>'未婚',2=>'已婚',3=>'丧偶',4=>'离婚');
+			$edu = array(0=>'无',1=>'小学',2=>'初中',3=>'高中',4=>'大专',5=>'本科或以上');
+			$care['sex'] = $sex[$care['sex']];
+			$care['marriage'] = $marr[$care['marriage']];
+			$care['education'] = $edu[$care['education']];
+			
+			$jkpgModel = new JiankangpingguModel();
+			$jkpg = $jkpgModel->getOne($care_id);
+			$resultModel = new ResultModel();
+			$reslist = $resultModel->getByCare_id($care_id);
+			$data['pageTitle'] = '评估总结';
+			$data['care'] = $care;
+			$data['jkpg'] = $jkpg;
+			$data['reslist'] = $reslist;
+			$this->assign($data);
+			$this->display();
+		}else{
+			redirect('/questionnaire/mycare');
 		}
 	}
 	

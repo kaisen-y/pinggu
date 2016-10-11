@@ -22,6 +22,12 @@ class JiankangpingguModel extends Model {
 		}
 		return $resp;
 	}
+	public function getOne($care_id){
+		if ($care_id <1){
+			return false;
+		}
+		return $this->where('care_id='.$care_id)->order('id desc')->find();
+	}
 }
 
 ?>

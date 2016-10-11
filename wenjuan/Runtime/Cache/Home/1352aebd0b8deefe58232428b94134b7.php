@@ -7,5 +7,6 @@
 <body>
 欢迎,<?php echo ($member_name); ?><a href="/user/logout">退出</a><br/>
 <a href="/questionnaire">我的评估项目</a>
+<a href="/questionnaire/mycare" >被评估者</a>
 </body>
 </html>

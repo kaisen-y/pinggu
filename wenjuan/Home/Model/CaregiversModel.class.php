@@ -22,6 +22,22 @@ class CaregiversModel extends Model {
 		}
 		return $resp;
 	}
+	
+	public function getOne($care_id){
+		if ($care_id <1){
+			return false;
+		}
+		return $this->find($care_id);
+	}
+	
+	/**
+	 * 
+	 * @param int $uid		//收集评估的人
+	 */
+	public function getlist($uid,$start=0, $length=10){
+		$list = $this->where('uid='.$uid)->limit($start,$length)->order('id  DESC')->select();
+		return $list;
+	}
 }
 
 ?>
