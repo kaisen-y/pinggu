@@ -12,6 +12,9 @@ return array(
 	'DB_NAME'  => defined('SAE_MYSQL_DB')?SAE_MYSQL_DB:'yijiayi_pinggu',
 	'DB_PREFIX' => 'pg_',
 	'DB_CHARSET'=> 'utf8mb4',
-		
+	
+	/*布局模板*/
+	'LAYOUT_ON'=>true,//启用布局模板
+	'LAYOUT_NAME'=>'Common/View/layout',
 
 );

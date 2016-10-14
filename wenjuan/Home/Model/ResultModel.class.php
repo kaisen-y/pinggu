@@ -14,6 +14,7 @@ class ResultModel extends Model {
 			$arr = array(
 					'care_id'			=> $data['care_id'],
 					'wj_id'				=> $data['wj_id'],
+					'wj_name'			=> $data['wj_name'],
 					'pg_qa'				=> json_encode($data['pg_qa']),
 					'pg_sum'			=> $data['pg_sum'],
 					'pg_result'			=> $data['pg_result'],

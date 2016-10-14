@@ -1,12 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>{$pageTitle}</title>
-</head>
-<body>
+<header class="header row" style="background: #3498db;color: #fff;">
+    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header col-md-3">
+            <div class="col-md-offset-2">
+                <h2><a href="index" style="color: #fff;">评估系统</a></h2>
+            </div>
+        </div>
+
+        <div class="header-right pull-right" style="padding: 10px 50px;">
+            <h4 style="color: #333">
+                欢迎,{$member_name}<a href="/user/logout" style="color:#fff;">退出</a>
+            </h4>
+        </div>
+    </nav>
+</header>
+<nav class="navbar-default navbar-side col-md-2" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <!--li>
+                <a href="/questionnaire">我的评估项目</a>
+            </li-->
+            <li>
+       			<a href="/questionnaire/care" >新增被评估者</a>
+            </li>
+            <li>
+       			<a href="/questionnaire/mycare" >被评估者</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-10" style="padding: 0">
+<div class="container">
 <foreach name="list" item="vo">
-	<a href="/questionnaire/careinfo/care_id/{$vo.id}">{$vo.name}</a>
+	<div class="bs-example container">
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>姓名</th>
+				<th>查看详情</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>{$vo.name}</td>
+				<td><a href="/questionnaire/careinfo/care_id/{$vo.id}">查看详情</a></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </foreach>
-</body>
-</html>
+</div></div>

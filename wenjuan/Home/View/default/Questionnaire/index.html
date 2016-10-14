@@ -1,21 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>{$pageTitle}</title>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/jquery.js"></script>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/common.js"></script>
-<script type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/msDialog.js"></script>
-<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/common.css" type="text/css"/>
-<link rel="stylesheet" href="{:C('RES_DOMAIN')}__CSS__/main.css" type="text/css"/>
-</head>
-<body>
-<a href="/questionnaire/create">新增评估项目</a>
-<br />
-<br />
-<foreach name="list" item="vo" >
-	<a href="/questionnaire/wenjuan/id/{$vo.wj_id}/care_id/{$care_id}">{$vo.wj_name}</a> &nbsp; &nbsp; <a href="/questionnaire/edit/id/{$vo.wj_id}">修改</a> &nbsp; &nbsp; <button onclick="delWj({$vo.wj_id})"> 删 除 </button><br/>
-</foreach>
+
+<div class="col-md-12" >
+    <span class="col-md-2 col-md-offset-1">
+        <a class="btn btn-primary btn-radius" href="/questionnaire/create">
+            <i class="glyphicon glyphicon-plus"></i>新增评估项目
+        </a>
+    </span>
+</div>
+<div class="col-md-10 col-md-offset-1" style="margin-top: 15px">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>评估项目</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="list" item="vo" >
+            <tr>
+                <td><a href="/questionnaire/wenjuan/id/{$vo.wj_id}/care_id/{$care_id}" style="text-decoration:none">{$vo.wj_name}</td>
+                <td>
+                    <a href="/questionnaire/edit/id/{$vo.wj_id}" class="btn btn-primary radius" style="text-decoration:none">修改</a> &nbsp;&nbsp;
+                    <a  class="btn btn-default " onclick="delWj({$vo.wj_id})">删 除</a>
+                </td>
+            </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>
+
 
 <script>
     function delWj(id) {
@@ -35,5 +47,3 @@
         
     }
 </script>
-</body>
-</html>

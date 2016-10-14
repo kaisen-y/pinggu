@@ -1,446 +1,477 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>{$pageTitle}</title>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href="{:C('RES_DOMAIN')}__CSS__/font-awesome.css" rel="stylesheet" />
-    <link href="{:C('RES_DOMAIN')}__CSS__/basic.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{:C('RES_DOMAIN')}__CSS__/jquery-ui.css" />
-</head>
-<body>
-<div>
-                <fieldset class="row">
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label" for="cname">用户姓名：</label>
-                        <div class="col-md-8">
-                            {$care.name}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label" for="csex">性别：</label>
-                        <div class="col-md-8">
-                            <div class="col-md-8">
-                            {$care.sex}
-                        	</div>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label" for="date_1">出生年月：</label>
-                        <div class="col-md-8">
-                        {$care.brith}
-						</div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">民族：</label>
-                        <div class="col-md-8">
-                        {$care.nation}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">籍贯：</label>
-                        <div class="col-md-8">{$care.origin}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">宗教信仰：</label>
-                        <div class="col-md-8">{$care.religion}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">证件类型：</label>
-                        <div class="col-md-8">{$care.credentials_type}
-                         </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">证件号：</label>
-                        <div class="col-md-8">{$care.credentials_no}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">社保卡号：</label>
-                        <div class="col-md-8">{$care.ss_card}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">文化程度：</label>
-                        <div class="col-md-8">{$care.education}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">婚姻状况：</label>
-                        <div class="col-md-8">{$care.marriage}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">既往职业：</label>
-                        <div class="col-md-8">{$care.careers}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label">户籍所在地：</label>
-                        <div class="col-md-8">{$care.registry_add}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label">居住地址：</label>
-                        <div class="col-md-8">{$care.address}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label">住所附近医院：</label>
-                        <div class="col-md-8">{$care.add_hospital}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-3 control-label">习惯就诊的医院：</label>
-                        <div class="col-md-8">{$care.hospital}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">住宅电话：</label>
-                        <div class="col-md-8">{$care.tellphone}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">移动电话：</label>
-                        <div class="col-md-8">{$care.mobile}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <hr>
-                        <h4 class="text-center">残疾信息（残障人士评估专用）</h4>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">残疾人证号：</label>
-                        <div class="col-md-8">{$care.disability_no}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">类别/等级：</label>
-                        <div class="col-md-8">{$care.disability_type}/{$care.disability_level}
-                           </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">致残时间：</label>
-                        <div class="col-md-8">{$care.disability_time}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">致残原因：</label>
-                        <div class="col-md-8">{$care.disability_cause}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <hr>
-                        <h4 class="text-center">紧急联系人信息</h4>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">姓名：</label>
-                        <div class="col-md-8">{$care.jjlx_name}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">与被照护人关系：</label>
-                        <div class="col-md-8">{$care.jjlx_guanxi}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">电话：</label>
-                        <div class="col-md-8">{$care.jjlx_phone}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">E-Mail：</label>
-                        <div class="col-md-8">{$care.jjlx_email}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">地址：</label>
-                        <div class="col-md-8">{$care.jjlx_addr}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3 control-label">备注：</label>
-                        <div class="col-md-8">{$care.jjlx_remark}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <hr>
-                        <h4 class="text-center">目前状况   </h4>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">经济来源：</label>
-                        <div class="col-md-10">{$care.jingjilaiyuan}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">经济条件：</label>
-                        <div class="col-md-10">{$care.jingjitiaojian}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">居住状况：</label>
-                        <div class="col-md-10">{$care.juzhu}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">安养状态：</label>
-                        <div class="col-md-10">{$care.anyang}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">住房性质：</label>
-                        <div class="col-md-10">{$care.zhufang}
-                           
-                        </div>
-                    </div>
-                    
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">休闲娱乐：</label>
-                        <div class="col-md-10">  {$care.xiuxian}
-                           
-                        </div>
-                    </div>
-                    
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">文化需求：</label>
-                        <div class="col-md-10">{$care.wenhuaxuqiu}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">特殊贡献：</label>
-                        <div class="col-md-10">{$care.teshugongxian}
-                           
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">备注：</label>
-                        <div class="col-md-10">{$care.remark}
-                        </div>
-                    </div>
-                </fieldset>
-</div>
-
-			<div class=".">
-                <h3>健康风险评估</h3>
+<header class="header row" style="background: #3498db;color: #fff;">
+    <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header col-md-3">
+            <div class="col-md-offset-2">
+                <h2><a href="index" style="color: #fff;">评估系统</a></h2>
             </div>
-                <fieldset class="row">
-                    <div class="form-group col-md-12">
-                        <h4 class="text-center">健康信息</h4>
-                        <hr>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
-                        <div class="col-md-7" style="padding-right: 0">{$jkpg.height}
-                        </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
-                        <div class="col-md-7" style="padding-right: 0">{$jkpg.weight}
-                        </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
-                        <div class="col-md-7" style="padding-right: 0">{$jkpg.neck}
-                        </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
-                        <div class="col-md-7" style="padding-right: 0">{$jkpg.waist}
-                        </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体温：</label>
-                        <div class="col-md-7" style="padding-right: 0">{$jkpg.temperature}
-                        </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">℃</label>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <div class="col-md-6">
-                            <label class="col-md-4 control-label">脉搏：</label>{$jkpg.maibo}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="col-md-3">血糖：</label>
-                        <div class="col-md-8" >{$jkpg.xuetang}
-                           
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">血压：</label>
-                        <div class="radio col-md-1">{$jkpg.xueya}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">血脂：</label>
-                        <div class="col-md-11">{$jkpg.xuezhi}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">吸烟情况：</label>
-                        <div class="col-md-11" style="display: inline">
-                            {$jkpg.xiyan}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <h4 class="text-center">营养状况</h4>
-                        <hr>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">饮食习惯：</label>
-                        <div class="col-md-10">{$jkpg.yinshixiguan}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">早餐：</label>
-                        <div class="col-md-10">{$jkpg.zaocan}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">午餐：</label>
-                        <div class="col-md-10">{$jkpg.wucan}
-                           
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">晚餐：</label>
-                        <div class="col-md-10">{$jkpg.wancan}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">加餐：</label>
-                        <div class="col-md-10">{$jkpg.jiacan}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">饮水：</label>
-                        <div class="col-md-10">{$jkpg.yinshui}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">配餐需求：</label>
-                        <div class="col-md-10">
-                            <if condition="$jkpg.peican == 1 ">是
-        					<else /> 否
-    						</if>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <h4 class="text-center">自我锻炼</h4>
-                        <hr>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">运动方式：</label>
-                        <div class="col-md-10">{$jkpg.yudongfangshi}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label">运动频次：</label>
-                        <div class="col-md-5">{$jkpg.yundongpinglv}
-                           
-                        </div>
-                       
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">运动后感觉：</label>
-                        <div class="col-md-10">{$jkpg.yundonghou}
-                           
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <h4 class="text-center">睡眠状况</h4>
-                        <hr>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">睡眠情况：</label>
-                        <div class="col-md-10">{$jkpg.shuimianqingkuang}
-                           
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">睡眠质量：</label>
-                        <div class="col-md-10">{$jkpg.shuimianzhiliang}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <h4 class="text-center">疾病情况</h4>
-                        <hr>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">疾病状态：</label>
-                        <div class="col-md-11">{$jkpg.jibing}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">目前症状 ：</label>
-                        <div class="col-md-11">{$jkpg.muqian}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">并发症：</label>
-                        <div class="col-md-11">{$jkpg.bingfa}
-                            
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-label" style="padding-right: 0px">疾病及症状描述：</label>
-                        <div class="col-md-10">{$jkpg.miaoshu}
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-1 control-label" style="padding-right: 10px">治疗情况：</label>
-                        <div class="col-md-11">{$jkpg.zhiliao}
-                            
-                        </div>
-                    </div>
-                </fieldset>
-<fieldset class="row">
-<foreach name="reslist" item="vo">
-	<div class=".">
-         <h3>{$vo.wj_name}</h3>
+        </div>
+
+        <div class="header-right pull-right" style="padding: 10px 50px;">
+            <h4 style="color: #333">
+                欢迎,{$member_name}<a href="/user/logout" style="color:#fff;">退出</a>
+            </h4>
+        </div>
+    </nav>
+</header>
+<nav class="navbar-default navbar-side col-md-2" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <!--li>
+                <a href="/questionnaire">我的评估项目</a>
+            </li-->
+            <li>
+       			<a href="/questionnaire/care" >新增被评估者</a>
+            </li>
+            <li>
+       			<a href="/questionnaire/mycare" >被评估者</a>
+            </li>
+        </ul>
     </div>
-    <div class=".">
-         <h3>{$vo.pg_sum}</h3>
+</nav>
+
+<div class="container">
+<div>
+    <div>
+        <div class=".">
+            <h3>基本信息</h3>
+        </div>
+        <fieldset class="row">
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">用户姓名：</label>
+                <div class="col-md-8">
+                    {$care.name}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label" >性别：</label>
+                <div class="col-md-8">
+                    <div class="col-md-8">
+                        {$care.sex}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">出生年月：</label>
+                <div class="col-md-8">
+                    {$care.brith}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">民族：</label>
+                <div class="col-md-8">
+                    {$care.nation}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">籍贯：</label>
+                <div class="col-md-8">{$care.origin}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">宗教信仰：</label>
+                <div class="col-md-8">{$care.religion}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">证件类型：</label>
+                <div class="col-md-8">{$care.credentials_type}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">证件号：</label>
+                <div class="col-md-8">{$care.credentials_no}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">社保卡号：</label>
+                <div class="col-md-8">{$care.ss_card}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">文化程度：</label>
+                <div class="col-md-8">{$care.education}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">婚姻状况：</label>
+                <div class="col-md-8">{$care.marriage}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">既往职业：</label>
+                <div class="col-md-8">{$care.careers}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-label">户籍所在地：</label>
+                <div class="col-md-8">{$care.registry_add}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-label">居住地址：</label>
+                <div class="col-md-8">{$care.address}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-label">住所附近医院：</label>
+                <div class="col-md-8">{$care.add_hospital}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-label">习惯就诊的医院：</label>
+                <div class="col-md-8">{$care.hospital}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">住宅电话：</label>
+                <div class="col-md-8">{$care.tellphone}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">移动电话：</label>
+                <div class="col-md-8">{$care.mobile}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <hr>
+                <h4 class="text-center">残疾信息（残障人士评估专用）</h4>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">残疾人证号：</label>
+                <div class="col-md-8">{$care.disability_no}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">类别/等级：</label>
+                <div class="col-md-8">{$care.disability_type}/{$care.disability_level}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">致残时间：</label>
+                <div class="col-md-8">{$care.disability_time}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">致残原因：</label>
+                <div class="col-md-8">{$care.disability_cause}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <hr>
+                <h4 class="text-center">紧急联系人信息</h4>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">姓名：</label>
+                <div class="col-md-8">{$care.jjlx_name}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">与被照护人关系：</label>
+                <div class="col-md-8">{$care.jjlx_guanxi}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">电话：</label>
+                <div class="col-md-8">{$care.jjlx_phone}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">E-Mail：</label>
+                <div class="col-md-8">{$care.jjlx_email}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">地址：</label>
+                <div class="col-md-8">{$care.jjlx_addr}
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3 control-label">备注：</label>
+                <div class="col-md-8">{$care.jjlx_remark}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <hr>
+                <h4 class="text-center">目前状况   </h4>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">经济来源：</label>
+                <div class="col-md-10">{$care.jingjilaiyuan}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">经济条件：</label>
+                <div class="col-md-10">{$care.jingjitiaojian}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">居住状况：</label>
+                <div class="col-md-10">{$care.juzhu}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">安养状态：</label>
+                <div class="col-md-10">{$care.anyang}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">住房性质：</label>
+                <div class="col-md-10">{$care.zhufang}
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">休闲娱乐：</label>
+                <div class="col-md-10">  {$care.xiuxian}
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">文化需求：</label>
+                <div class="col-md-10">{$care.wenhuaxuqiu}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">特殊贡献：</label>
+                <div class="col-md-10">{$care.teshugongxian}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">备注：</label>
+                <div class="col-md-10">{$care.remark}
+                </div>
+            </div>
+        </fieldset>
     </div>
-    <foreach name="vo.pg_qa" item="vqa">
-    	问题:{$vqa.question}<br>
-    	选项:
-    	<foreach name="vqa.answer" item="va">
-		{$va} <notempty name="va"><br></notempty>
-		</foreach>
-    	<br>得分:{$vqa.defen}
-    </foreach>
-    <div class=".">
-         <h3>总分</h3>{$vo.pg_sum}
+    <div>
+        <div class=".">
+            <h3>健康风险评估</h3>
+        </div>
+        <fieldset class="row">
+            <div class="form-group col-md-12">
+                <h4 class="text-center">健康信息</h4>
+                <hr>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
+                <div class="col-md-7" style="padding-right: 0">{$jkpg.height}
+                </div>
+                <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
+                <div class="col-md-7" style="padding-right: 0">{$jkpg.weight}
+                </div>
+                <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
+                <div class="col-md-7" style="padding-right: 0">{$jkpg.neck}
+                </div>
+                <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
+                <div class="col-md-7" style="padding-right: 0">{$jkpg.waist}
+                </div>
+                <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体温：</label>
+                <div class="col-md-7" style="padding-right: 0">{$jkpg.temperature}
+                </div>
+                <label class="col-md-1 control-label" style="padding-left: 0">℃</label>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="col-md-6">
+                    <label class="col-md-4 control-label">脉搏：</label>{$jkpg.maibo}
+
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-3">血糖：</label>
+                <div class="col-md-8" >{$jkpg.xuetang}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">血压：</label>
+                <div class="radio col-md-1">{$jkpg.xueya}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">血脂：</label>
+                <div class="col-md-11">{$jkpg.xuezhi}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">吸烟情况：</label>
+                <div class="col-md-11" style="display: inline">
+                    {$jkpg.xiyan}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <h4 class="text-center">营养状况</h4>
+                <hr>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">饮食习惯：</label>
+                <div class="col-md-10">{$jkpg.yinshixiguan}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">早餐：</label>
+                <div class="col-md-10">{$jkpg.zaocan}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">午餐：</label>
+                <div class="col-md-10">{$jkpg.wucan}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">晚餐：</label>
+                <div class="col-md-10">{$jkpg.wancan}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">加餐：</label>
+                <div class="col-md-10">{$jkpg.jiacan}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">饮水：</label>
+                <div class="col-md-10">{$jkpg.yinshui}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">配餐需求：</label>
+                <div class="col-md-10">
+                    <if condition="$jkpg.peican == 1 ">是
+                        <else /> 否
+                    </if>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <h4 class="text-center">自我锻炼</h4>
+                <hr>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">运动方式：</label>
+                <div class="col-md-10">{$jkpg.yudongfangshi}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label">运动频次：</label>
+                <div class="col-md-5">{$jkpg.yundongpinglv}
+
+                </div>
+
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">运动后感觉：</label>
+                <div class="col-md-10">{$jkpg.yundonghou}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <h4 class="text-center">睡眠状况</h4>
+                <hr>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">睡眠情况：</label>
+                <div class="col-md-10">{$jkpg.shuimianqingkuang}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">睡眠质量：</label>
+                <div class="col-md-10">{$jkpg.shuimianzhiliang}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <h4 class="text-center">疾病情况</h4>
+                <hr>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">疾病状态：</label>
+                <div class="col-md-11">{$jkpg.jibing}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">目前症状 ：</label>
+                <div class="col-md-11">{$jkpg.muqian}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">并发症：</label>
+                <div class="col-md-11">{$jkpg.bingfa}
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label" style="padding-right: 0px">疾病及症状描述：</label>
+                <div class="col-md-10">{$jkpg.miaoshu}
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label class="col-md-1 control-label" style="padding-right: 10px">治疗情况：</label>
+                <div class="col-md-11">{$jkpg.zhiliao}
+
+                </div>
+            </div>
+        </fieldset>
     </div>
-    <div class=".">
-         <h3>总结</h3>{$vo.pg_result}
+    <div>
+        <div class=".">
+            <h3>其它</h3>
+        </div>
+        <fieldset class="row">
+            <foreach name="reslist" item="vo">
+                <div class=".">
+                    <h3>{$vo.wj_name}</h3>
+                </div>
+                <div class=".">
+                    <h3>{$vo.pg_sum}</h3>
+                </div>
+                <foreach name="vo.pg_qa" item="vqa">
+                    问题:{$vqa.question}<br>
+                    选项:
+                    <foreach name="vqa.answer" item="va">
+                        {$va} <notempty name="va"><br></notempty>
+                    </foreach>
+                    <br>得分:{$vqa.defen}
+                </foreach>
+                <div class=".">
+                    <h3>总分</h3>{$vo.pg_sum}
+                </div>
+                <div class=".">
+                    <h3>总结</h3>{$vo.pg_result}
+                </div>
+                <div class=".">
+                    <h3>备注</h3>{$vo.remark}
+                </div>
+            </foreach>
+        </fieldset>
     </div>
-    <div class=".">
-         <h3>备注</h3>{$vo.remark}
-    </div>
-</foreach>
-</fieldset>
-</body>
-</html>
+</div>
+</div>

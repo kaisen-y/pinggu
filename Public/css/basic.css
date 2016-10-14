@@ -251,11 +251,22 @@ body {
 input{ height:20px; line-height:20px; padding:2px; border:1px solid #d3d3d3}
 .ui-datepicker-trigger{
     display: inline;
-    width: 8%;
+    width: 10%;
 }
 .error{
     color:red;
 }
 .radio{
     margin-left: 25px;
+}
+.form-group!important{
+margin-bottom:15px
+}
+@media screen and (max-width:500px){
+    .ui-datepicker-trigger{
+        width: 25%;
+    }
+    .duoxuan{
+        margin-left: 10%;
+    }
 }

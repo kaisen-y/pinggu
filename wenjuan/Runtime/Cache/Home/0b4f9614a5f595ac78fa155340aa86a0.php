@@ -1,8 +1,8 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>​易简医</title>
+<meta charset="UTF-8">
+<title><?php echo ($pageTitle); ?></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -12,8 +12,25 @@
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/font-awesome.css" rel="stylesheet" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/basic.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" />
+    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" rel="stylesheet" />
+    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/datepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/login.css" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
+<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
 </head>
-<body style="margin: -20px 0px;;font-family: Microsoft YaHei;">
+<body>
+
+<div style="margin: -20px 0px;;font-family: Microsoft YaHei;">
     <header class="header row" style="background: #3498db;color: #fff;">
         <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header col-md-3">
@@ -46,35 +63,35 @@
                     <div class="form-group col-md-3">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
                         <div class="col-md-7" style="padding-right: 0">
-                            <input  type="text" class="form-control" name="height" required>
+                            <input  type="text" class="form-control" name="height" >
                         </div>
                         <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                     </div>
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
                         <div class="col-md-7" style="padding-right: 0">
-                            <input  type="text" class="form-control" name="weight" required>
+                            <input  type="text" class="form-control" name="weight" >
                         </div>
                         <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
                     </div>
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
                         <div class="col-md-7" style="padding-right: 0">
-                            <input name="neck" type="text" class="form-control" required>
+                            <input name="neck" type="text" class="form-control" >
                         </div>
                         <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                     </div>
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
                         <div class="col-md-7" style="padding-right: 0">
-                            <input name="waist" type="text" class="form-control" required>
+                            <input name="waist" type="text" class="form-control" >
                         </div>
                         <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                     </div>
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体温：</label>
                         <div class="col-md-7" style="padding-right: 0">
-                            <input name="temperature" type="text" class="form-control" required>
+                            <input name="temperature" type="text" class="form-control" >
                         </div>
                         <label class="col-md-1 control-label" style="padding-left: 0">℃</label>
                     </div>
@@ -82,7 +99,7 @@
                         <div class="col-md-6">
                             <label class="col-md-4 control-label">脉搏：</label>
                             <div class="col-md-4" style="padding-right: 0">
-                                <input name="maibo" type="text" class="form-control" required>
+                                <input name="maibo" type="text" class="form-control" >
                             </div>
                             <label class="col-md-3 control-label" style="padding-left: 0">次/分</label>
                         </div>
@@ -187,7 +204,7 @@
                             </div>
                             <label class="col-md-2 control-label text-left" for="year">报告日期：</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="xuezhi_date" id="year" name="sex" style="display: inline;width: 80%" required>
+                                <input type="text" class="form-control" name="xuezhi_date" id="year" name="sex" style="display: inline;width: 80%" >
                             </div>
                         </div>
                     </div>
@@ -202,7 +219,7 @@
                                 </select>
                             </div>
                             <div class="col-md-5" >
-                                <input  type="text" name="xiyang_times" class="form-control" >
+                                <input  type="text" name="xiyan_times" class="form-control" >
                             </div>
                             <label class="col-md-1 control-label" style="padding-left: 0">支/天</label>
                         </div>
@@ -742,19 +759,7 @@
             </form>
         </div>
     </div>
-
-
-
-</body>
-<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
+</div>
 <script type="text/javascript">
     $(function(){
         $("#year").datepicker({
@@ -791,4 +796,6 @@
         });
     });
 </script>
+
+</body>
 </html>

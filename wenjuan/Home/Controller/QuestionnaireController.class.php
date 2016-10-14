@@ -301,8 +301,22 @@ class QuestionnaireController extends BaseController {
 			$jkpg = new JiankangpingguModel();
 			$resp = $jkpg->create($arr);
 			if($resp['data']){
-				redirect('/questionnaire?care_id='.$arr['care_id']);
+				redirect('/questionnaire/qita/care_id/'.$arr['care_id'].'/oname/zlnlpg');
 			}
+		}
+	}
+	
+	public function qita(){
+		if(IS_GET){
+			if(intval(I('get.care_id')) < 1){
+				redirect('/questionnaire/care');
+			}
+			$data['care_id'] = I('care_id');
+			$this->assign($data);
+			$template = I('get.oname') ? I('get.oname') : 'zlnlpg';
+			$this->display($template);
+		}else{
+			redirect('/questionnaire/care');
 		}
 	}
 	
@@ -317,15 +331,32 @@ class QuestionnaireController extends BaseController {
 				$wj_ids = array_keys(I('post.pingfen'));
 				$questionModel = new QuestionModel();
 				$qlist = $questionModel->getAllQuestion($wj_id);
-				foreach ($qlist as $k=>$v){
-					if($pingfen[$v['wjq_id']]){
-						$pg_qa[] = array(
-							'question' 	=> $v['wjq_question'],
-							'answer'	=> $v['wjq_answer'],
-							'defen'		=> $pingfen[$v['wjq_id']]
-						);
+				if(is_array($qlist)){
+					foreach ($qlist as $k=>$v){
+						if($pingfen[$v['wjq_id']]){
+							$pg_qa[] = array(
+								'question' 	=> $v['wjq_question'],
+								'answer'	=> $v['wjq_answer'],
+								'defen'		=> $pingfen[$v['wjq_id']]
+							);
+						}
 					}
 				}
+			}else{
+				$pg_sum = 0;
+				if(is_array($pg_qa)){
+					foreach ($pg_qa as $v){
+						$pg_sum = $pg_sum+$v['defen'];
+					}
+				}
+			}
+			$remark = I("post.remark");
+			if(is_array($remark)){
+				$str = '';
+				foreach ($remark as $val){
+					$str .= $val['rename'].' : '.join(',', $val['val']).'   ';
+				}
+				$remark = $str;
 			}
 
 			$userModel = new UserModel();
@@ -333,14 +364,18 @@ class QuestionnaireController extends BaseController {
 			$data = array(
 					'uid'				=> $user['member_id'],
 					'care_id'			=> I('post.care_id'),
+					'wj_name'			=> I('post.wj_name'),
 					'wj_id'				=> $wj_id,
 					'pg_qa'				=> $pg_qa,
 					'pg_sum'			=> $pg_sum,
 					'pg_result'			=> I('post.jielun'),
-					'remark'			=> I('post.remark'),
+					'remark'			=> $remark,
 			);
 			
 			$resp = $result->create($data);
+			if(I("post.goto")){
+				redirect(I('post.goto'));
+			}
 			echo json_encode($resp);
 		}else{
 			redirect('/questionnaire');
