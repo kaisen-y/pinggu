@@ -25,7 +25,7 @@ class QuestionnaireController extends BaseController {
 	}
 	
 	public function index(){
-		
+		redirect('/user');//暂停自定评估项目
 		$userModel = new UserModel();
 		$user = $userModel->getUserSession();
 

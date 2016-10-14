@@ -30,28 +30,27 @@
     </div>
 </nav>
     <div class="col-md-10" style="padding: 0">
-
-        <div class="">
-            <div class=".">
-                <h3>疾病/治疗/康复需求评估</h3>
-            </div>
-            <form class="Huiform form-horizontal" id="commentForm" action="/questionnaire/jieguo" method="post">
+        <form class="Huiform form-horizontal" id="commentForm" action="/questionnaire/jieguo" method="post">
             <input type="hidden" name="wj_name" value="疾病/治疗/康复需求评估"/>
             <input type="hidden" name="care_id" value="{$care_id}" />
             <input type="hidden" name="goto" value="/questionnaire/careinfo/care_id/{$care_id}" />
-                <fieldset class="row">
+                <fieldset class="row" style="margin: 0">
+                    <div class="form-group col-md-12">
+                        <h3>疾病/治疗/康复需求评估</h3>
+                    </div>
                     <h4>病情观察及健康评估</h4>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">生命体征的动态监测(最高分:10分）
+                        <label class="col-md-4" style="margin-bottom: 15px">
+                            <span class="text-left">生命体征的动态监测(10分)</span>
                         	<input type="hidden" name="pg_qa[0][question]" value="生命体征的动态监测(最高分:10分）">
-                            <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[0][defen]" value="" required>分
+                            <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 5px" name="pg_qa[0][defen]" value="" required>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[0][answer]" value="">
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">营养状况评估(最高分:10分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">营养状况评估(10分）
                         	<input type="hidden" name="pg_qa[1][question]" value="营养状况评估(最高分:10分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[1][defen]" value="" required>分
                         </label>
@@ -60,7 +59,7 @@
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">中风复发风险评估(最高分:5分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">中风复发风险评估(5分）
                         	<input type="hidden" name="pg_qa[2][question]" value="中风复发风险评估(最高分:5分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[2][defen]" value="" required>分
                         </label>
@@ -69,7 +68,7 @@
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">基于药物使用需检测生命体征<br>或其它监测指标(最高分:10分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">基于药物使用需检测生命体征<br>或其它监测指标(10分）
                         	<input type="hidden" name="pg_qa[3][question]" value="基于药物使用需检测生命体征  或其它监测指标(最高分:10分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[3][defen]" value="" required>分
                         </label>
@@ -77,7 +76,9 @@
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[3][answer]" value="">
                         </label>
                     </div>
-                    <h4>治疗需要</h4>
+                    <div class="form-group col-md-12">
+                        <h4>治疗需要</h4>
+                    </div>
                     <div class="form-group col-md-12">
                         <label class="col-md-4 control-label">雾化吸入治疗和/或叩背排痰
                             <label>
@@ -273,13 +274,12 @@
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[16][answer]" value="">
                         </label>
                     </div>
-                    
-                    
-                    
-           <div class=".">
-                <h3>居室环境安全评估</h3>
-            </div>
-           <div class="form-group col-md-12">
+
+                    <div class="form-group col-md-12">
+                        <h3>居室环境安全评估</h3>
+                    </div>
+
+                    <div class="form-group col-md-12">
                         <label class="col-md-4 control-label">是否无障碍坡道
                             <label>
                                 <input type="radio" name="pg_qa[17][question]"  value="居室环境安全评估: 是否无障碍坡道:是">
@@ -387,7 +387,7 @@
                             </label>
                         </label>
                     </div>
-            <div class=".">
+            <div class="form-group col-md-12">
                 <h3>服务建议</h3>
             </div>
                    <div class="form-group col-md-12">
@@ -472,6 +472,5 @@
                     </div>
                 </fieldset>
             </form>
-        </div>
     </div>
 </div>

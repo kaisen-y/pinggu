@@ -26,6 +26,8 @@
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
 </head>
 <body>
 
@@ -45,42 +47,6 @@
             </div>
         </nav>
     </header>
-    <!--nav class="navbar-default navbar-side col-md-2" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="main-menu">
-                <li>
-                    <a class="active-menu" href="#"><i class="fa fa-desktop "></i>A区<span class="fa arrow"></span></a>
-                    <ul class="nav">
-                        <li>
-                            <a href="#"><i class="fa fa-toggle-on"></i>A院	</a>
-                            <ul class="nav nav-second-level nav-third">
-                                <li>
-                                    <a href="#"><i class="fa fa-toggle-on"></i>A病人	</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bell "></i>B病人</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-circle-o "></i>C病人</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bell "></i>B院</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-circle-o "></i>C院</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-dashboard "></i>其它</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </nav-->
     <nav class="navbar-default navbar-side col-md-2" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">

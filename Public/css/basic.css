@@ -244,6 +244,9 @@ body {
 .form-horizontal .control-label{
     text-align: left;
 }
+.qsxw{
+    width: 55%;
+}
 /*datepicker*/
 .demo h4{height:32px; line-height:32px; font-size:14px}
 .demo h4 span{font-weight:500; font-size:12px}
@@ -268,5 +271,8 @@ margin-bottom:15px
     }
     .duoxuan{
         margin-left: 10%;
+    }
+    .qsxw{
+        width: 100%;
     }
 }
