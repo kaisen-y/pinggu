@@ -42,7 +42,7 @@
 
             <div class="header-right">
                 <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
 
             </div>
         </nav>

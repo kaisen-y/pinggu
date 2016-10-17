@@ -30,7 +30,21 @@
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
 </head>
 <body>
+<header class="header row" style="background: #3498db;color: #fff;">
+        <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header col-md-3">
+                <div class="col-md-offset-2">
+                    <a class="navbar-brand" href="index.html">评估系统</a>
+                </div>
+            </div>
 
+            <div class="header-right">
+                <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
+
+            </div>
+        </nav>
+    </header>
 <nav class="navbar-default navbar-side col-md-2" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">

@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" rel="stylesheet" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/datepicker.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/login.css" />
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
@@ -27,6 +26,8 @@
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
 </head>
 <body>
 <div style="margin: -20px 0px;;font-family: Microsoft YaHei;">
@@ -61,28 +62,27 @@
     </div>
 </nav>
     <div class="col-md-10" style="padding: 0">
-
-        <div class="">
-            <div class=".">
-                <h3>疾病/治疗/康复需求评估</h3>
-            </div>
-            <form class="Huiform form-horizontal" id="commentForm" action="/questionnaire/jieguo" method="post">
+        <form class="Huiform form-horizontal" id="commentForm" action="/questionnaire/jieguo" method="post">
             <input type="hidden" name="wj_name" value="疾病/治疗/康复需求评估"/>
             <input type="hidden" name="care_id" value="<?php echo ($care_id); ?>" />
-            <input type="hidden" name="goto" value="/questionnaire/careinfo/care_id/<?php echo ($care_id); ?>" />
-                <fieldset class="row">
+            <input type="hidden" name="goto" value="/questionnaire/qita/care_id/<?php echo ($care_id); ?>/oname/jzaqpg" />
+                <fieldset class="row" style="margin: 0">
+                    <div class="form-group col-md-12">
+                        <h3>疾病/治疗/康复需求评估</h3>
+                    </div>
                     <h4>病情观察及健康评估</h4>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">生命体征的动态监测(最高分:10分）
+                        <label class="col-md-4" style="margin-bottom: 15px">
+                            <span class="text-left">生命体征的动态监测(10分)</span>
                         	<input type="hidden" name="pg_qa[0][question]" value="生命体征的动态监测(最高分:10分）">
-                            <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[0][defen]" value="" required>分
+                            <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 5px" name="pg_qa[0][defen]" value="" required>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[0][answer]" value="">
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">营养状况评估(最高分:10分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">营养状况评估(10分）
                         	<input type="hidden" name="pg_qa[1][question]" value="营养状况评估(最高分:10分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[1][defen]" value="" required>分
                         </label>
@@ -91,7 +91,7 @@
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">中风复发风险评估(最高分:5分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">中风复发风险评估(5分）
                         	<input type="hidden" name="pg_qa[2][question]" value="中风复发风险评估(最高分:5分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[2][defen]" value="" required>分
                         </label>
@@ -100,7 +100,7 @@
                         </label>
                     </div>
                     <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">基于药物使用需检测生命体征<br>或其它监测指标(最高分:10分）
+                        <label class="col-md-4 " style="margin-bottom: 15px">基于药物使用需检测生命体征<br>或其它监测指标(10分）
                         	<input type="hidden" name="pg_qa[3][question]" value="基于药物使用需检测生命体征  或其它监测指标(最高分:10分）">
                             <input type="text" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[3][defen]" value="" required>分
                         </label>
@@ -108,7 +108,9 @@
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[3][answer]" value="">
                         </label>
                     </div>
-                    <h4>治疗需要</h4>
+                    <div class="form-group col-md-12">
+                        <h4>治疗需要</h4>
+                    </div>
                     <div class="form-group col-md-12">
                         <label class="col-md-4 control-label">雾化吸入治疗和/或叩背排痰
                             <label>
@@ -305,197 +307,6 @@
                         </label>
                     </div>
                     
-                    
-                    
-           <div class=".">
-                <h3>居室环境安全评估</h3>
-            </div>
-           <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">是否无障碍坡道
-                            <label>
-                                <input type="radio" name="pg_qa[17][question]"  value="居室环境安全评估: 是否无障碍坡道:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio"name="pg_qa[17][question]" value="是否无障碍坡道:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">是否电梯
-                            <label>
-                                <input type="radio" name="pg_qa[18][question]" value="是否电梯:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[18][question]"  value="是否电梯:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">室内是否有门坎
-                            <label>
-                                <input type="radio" name="pg_qa[19][question]"   value="室内是否有门坎:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[19][question]"   value="室内是否有门坎:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">室内有物品羁绊
-                            <label>
-                                <input type="radio" name="pg_qa[20][question]"   value="室内有物品羁绊:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[20][question]"   value="室内有物品羁绊:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">地面是否反光
-                            <label>
-                                <input type="radio" name="pg_qa[21][question]"   value="地面是否反光:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[21][question]"   value="地面是否反光:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">地面是否防滑
-                            <label>
-                                <input type="radio" name="pg_qa[22][question]"   value="地面是否防滑:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[22][question]"   value="地面是否防滑:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label">浴缸、淋浴房旁有扶手
-                            <label>
-                                <input type="radio" name="pg_qa[23][question]"   value="浴缸、淋浴房旁有扶手:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[23][question]"   value="浴缸、淋浴房旁有扶手:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label radio">是否有浴椅
-                            <label>
-                                <input type="radio" name="pg_qa[24][question]"   value="是否有浴椅:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio" name="pg_qa[24][question]"   value="是否有浴椅:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label class="col-md-4 control-label radio">马桶旁有扶手
-                            <label>
-                                <input type="radio" name="pg_qa[25][question]"   value="马桶旁有扶手:是">
-                                是
-                            </label>
-                            <label>
-                                <input type="radio"  name="pg_qa[25][question]"  value="马桶旁有扶手:否">
-                                否
-                            </label>
-                        </label>
-                    </div>
-            <div class=".">
-                <h3>服务建议</h3>
-            </div>
-                   <div class="form-group col-md-12">
-                        <div class="col-md-11"><input type="hidden" name="pg_qa[26][question]" value="服务建议">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="健康管理"> 健康管理
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="健康咨询"> 健康咨询
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="健康讲座"> 健康讲座
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="慢病维护"> 慢病维护
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="陪同就医"> 陪同就医
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="营养膳食"> 营养膳食
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="送餐服务"> 送餐服务
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="健康指导"> 健康指导
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="康复指导"> 康复指导
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="家属培训"> 家属培训
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="个人卫生"> 个人卫生
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="行动协助"> 行动协助
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="生活自理能力训练"> 生活自理能力训练
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="认知功能训练"> 认知功能训练
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="功能训练"> 功能训练
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="保健按摩"> 保健按摩
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="心理慰藉"> 心理慰藉
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="陪伴"> 陪伴
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="生命体征测量"> 生命体征测量
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="家庭深度清洁"> 家庭深度清洁
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="居室安全改造"> 居室安全改造
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="辅具适配"> 辅具适配
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="pg_qa[26][answer][]" value="其他"> 其他
-                                <input type="text" class="form-control" style="display: inline;width: 70%;"  name="pg_qa[26][answer][]" value="">
-                            </label>
-                        </div>
-                    </div> 
-                    
                     <div class="form-group col-md-12" style="margin-top:20px;">
                         <div class=" text-left col-md-2 col-md-offset-3">
                             <button type="submit" class="btn btn-primary radius" style="width:70%"><i class="icon-ok"></i>提交</button>
@@ -503,8 +314,8 @@
                     </div>
                 </fieldset>
             </form>
-        </div>
     </div>
 </div>
+
 </body>
 </html>

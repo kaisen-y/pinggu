@@ -480,10 +480,7 @@
             <?php if(is_array($reslist)): foreach($reslist as $key=>$vo): ?><div class=".">
                     <h3><?php echo ($vo["wj_name"]); ?></h3>
                 </div>
-                <div class=".">
-                    <h3><?php echo ($vo["pg_sum"]); ?></h3>
-                </div>
-                <?php if(is_array($vo["pg_qa"])): foreach($vo["pg_qa"] as $key=>$vqa): ?><h4><strong>问题:<?php echo ($vqa["question"]); ?></strong></h4>
+                <?php if(is_array($vo["pg_qa"])): foreach($vo["pg_qa"] as $key=>$vqa): if(!empty($vqa["question"])): ?><h4><strong>问题:<?php echo ($vqa["question"]); ?></strong></h4><?php endif; ?>
                     <?php if(!empty($vqa["answer"])): ?><div class="xuanxiang">
                         <h4 style="display: inline-block;float: left;">选项:</h4>
                         <div  style="display:  inline-block;margin: 8px 0px 0 20px;font-size: 16px;">
@@ -495,7 +492,7 @@
                     <h4>总分:<strong><?php echo ($vo["pg_sum"]); ?></strong></h4>
                 </div>
                 <div class=".">
-                    <h4>总分:<strong><?php echo ($vo["pg_result"]); ?></strong></h4>
+                    <h4>结论:<strong><?php echo ($vo["pg_result"]); ?></strong></h4>
                 </div>
                 <div class=".">
                     <h4>备注:<strong><?php echo ($vo["remark"]); ?></strong></h4>

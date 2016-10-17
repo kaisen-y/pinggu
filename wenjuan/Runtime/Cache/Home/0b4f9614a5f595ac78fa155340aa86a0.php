@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" rel="stylesheet" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/datepicker.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/login.css" />
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
@@ -27,6 +26,8 @@
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
 </head>
 <body>
 
@@ -41,12 +42,26 @@
 
             <div class="header-right">
                 <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
 
             </div>
         </nav>
     </header>
-    <nav class="navbar-default navbar-side col-md-2" role="navigation"> </nav>
+    <nav class="navbar-default navbar-side col-md-2" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--li>
+                    <a href="/questionnaire">我的评估项目</a>
+                </li-->
+                <li>
+                    <a href="/questionnaire/care" >新增被评估者</a>
+                </li>
+                <li>
+                    <a href="/questionnaire/mycare" >被评估者</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="col-md-10" style="padding: 0">
 
         <div class="">
@@ -60,27 +75,30 @@
                         <hr>
                     </div>
                     <input type='hidden' name="care_id" value="<?php echo ($care_id); ?>">
-                    <div class="form-group col-md-3">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
-                        <div class="col-md-7" style="padding-right: 0">
-                            <input  type="text" class="form-control" name="height" >
+                    <div class="col-xs-12">
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
+                            <div class="col-md-7" style="padding-right: 0">
+                                <input  type="text" class="form-control" name="height" >
+                            </div>
+                            <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                         </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
-                        <div class="col-md-7" style="padding-right: 0">
-                            <input  type="text" class="form-control" name="weight" >
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
+                            <div class="col-md-7" style="padding-right: 0">
+                                <input  type="text" class="form-control" name="weight" >
+                            </div>
+                            <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
                         </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
-                        <div class="col-md-7" style="padding-right: 0">
-                            <input name="neck" type="text" class="form-control" >
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
+                            <div class="col-md-7" style="padding-right: 0">
+                                <input name="neck" type="text" class="form-control" >
+                            </div>
+                            <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                         </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
                     </div>
+
                     <div class="form-group col-md-2">
                         <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
                         <div class="col-md-7" style="padding-right: 0">

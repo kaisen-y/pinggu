@@ -10,12 +10,26 @@
 
             <div class="header-right">
                 <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
 
             </div>
         </nav>
     </header>
-    <nav class="navbar-default navbar-side col-md-2" role="navigation"> </nav>
+    <nav class="navbar-default navbar-side col-md-2" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--li>
+                    <a href="/questionnaire">我的评估项目</a>
+                </li-->
+                <li>
+                    <a href="/questionnaire/care" >新增被评估者</a>
+                </li>
+                <li>
+                    <a href="/questionnaire/mycare" >被评估者</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="col-md-10" style="padding: 0">
 
         <div class="">

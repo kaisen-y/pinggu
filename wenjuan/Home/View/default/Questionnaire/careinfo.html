@@ -450,16 +450,13 @@
                 <div class=".">
                     <h3>{$vo.wj_name}</h3>
                 </div>
-                <div class=".">
-                    <h3>{$vo.pg_sum}</h3>
-                </div>
                 <foreach name="vo.pg_qa" item="vqa">
-                    <h4><strong>问题:{$vqa.question}</strong></h4>
+                    <notempty name="vqa.question"><h4><strong>问题:{$vqa.question}</strong></h4></notempty>
                     <notempty name="vqa.answer">
                     <div class="xuanxiang">
                         <h4 style="display: inline-block;float: left;">选项:</h4>
                         <div  style="display:  inline-block;margin: 8px 0px 0 20px;font-size: 16px;">
-                            <foreach name="vqa.answer" item="va" style="">
+                            <foreach name="vqa.answer" item="va">
                                 {$va} <notempty name="va"><br></notempty>
                             </foreach>
                         </div>
@@ -471,7 +468,7 @@
                     <h4>总分:<strong>{$vo.pg_sum}</strong></h4>
                 </div>
                 <div class=".">
-                    <h4>总分:<strong>{$vo.pg_result}</strong></h4>
+                    <h4>结论:<strong>{$vo.pg_result}</strong></h4>
                 </div>
                 <div class=".">
                     <h4>备注:<strong>{$vo.remark}</strong></h4>
