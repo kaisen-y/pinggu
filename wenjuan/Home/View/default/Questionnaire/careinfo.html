@@ -443,10 +443,61 @@
     </div>
     <div>
         <div class=".">
-            <h3>其它</h3>
+            <h3></h3>
         </div>
+        <link rel="stylesheet" type="text/css" href="{:C('RES_DOMAIN')}__CSS__/jquery.jqChart.css" />
+    	<link rel="stylesheet" type="text/css" href="{:C('RES_DOMAIN')}__CSS__/jquery.jqRangeSlider.css" />
+    	<script src="{:C('RES_DOMAIN')}__JS__/jquery.jqChart.min.js" type="text/javascript"></script>
+    	<script src="{:C('RES_DOMAIN')}__JS__/jquery.jqRangeSlider.min.js" type="text/javascript"></script>
+    	<!--[if IE]><script lang="javascript" type="text/javascript" src="{:C('RES_DOMAIN')}__JS__/excanvas.js"></script><![endif]-->
+        
+        
+            <script lang="javascript" type="text/javascript">  
+		        $(document).ready(function () {
+		            var background = {
+		                type: 'linearGradient',  
+		                x0: 0,
+		                x1: 0, 
+		                colorStops: [{ offset: 0, color: '#d2e6c9' }]  
+		            };
+		            $('#jqChart').jqChart({
+		                title: { text: '雷达图' },  
+		                border: { strokeStyle: '#6ba851' },  
+		                background: background,  
+		                axes: [
+		                        {
+		                            type: 'categoryAngle',  
+		                            categories: [<foreach name="radar_cat" item="nv">'{$nv}',</foreach>]  
+		                        },
+		                        {
+		                            type: 'linearRadius',
+		                            renderStyle: 'polygon',
+		                            lineWidth: '5',
+		                            minimum : 0,
+		                            maximum : 100,
+		                            interval : 20,
+		                            majorTickMarks: { visible: true }  
+		                        }
+		                      ],  
+		                series: [
+		                            {
+		                                title : ' ',  
+		                                type: 'radarArea',  
+		                                data: [<foreach name="radar_val" item="val">{$val},</foreach>],  
+		                                fillStyle: 'rgba(65,140,240,0.75)'  
+		                            }
+		                        ]
+		            });
+		        });  
+		    </script>
+                
+                <div>
+			        <div id="jqChart" style="width: 500px; height: 300px; margin-top: 24px;">
+			        </div>
+			    </div>
+        
         <fieldset class="row" style="margin: 0 8%">
-            <foreach name="reslist" item="vo">
+            <foreach name="reslist" item="vo" key="k">
                 <div class=".">
                     <h3>{$vo.wj_name}</h3>
                 </div>
@@ -462,18 +513,24 @@
                         </div>
                     </div>
                     </notempty>
-                    <notempty name="vqa.defen"><h4>得分:<strong>{$vqa.defen}</strong></h4></notempty>
+                    <if condition="($vqa.defen gt 0) OR ($vqa.defen eq '0')"><h4>得分:<strong>{$vqa.defen}</strong></h4></if>
                 </foreach>
+                <if condition="($vo.pg_sum gt 0) OR ($vo.pg_sum eq '0')">
+                
                 <div class=".">
                     <h4>总分:<strong>{$vo.pg_sum}</strong></h4>
                 </div>
+                </if>
                 <div class=".">
                     <h4>结论:<strong>{$vo.pg_result}</strong></h4>
                 </div>
+                <notempty name="vo.remark">
                 <div class=".">
                     <h4>备注:<strong>{$vo.remark}</strong></h4>
                 </div>
+                </notempty>
             </foreach>
+            
         </fieldset>
     </div>
 </div>

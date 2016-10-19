@@ -414,6 +414,10 @@ class QuestionnaireController extends BaseController {
 			$data['care'] = $care;
 			$data['jkpg'] = $jkpg;
 			$data['reslist'] = $reslist;
+			foreach ($reslist as $v){
+				$data['radar_cat'][] = str_replace('评估', '', $v['wj_name']);
+				$data['radar_val'][] = $v['pg_sum'];
+			}
 			$this->assign($data);
 			$this->display();
 		}else{

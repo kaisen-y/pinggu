@@ -474,10 +474,61 @@
     </div>
     <div>
         <div class=".">
-            <h3>其它</h3>
+            <h3></h3>
         </div>
+        <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/jquery.jqChart.css" />
+    	<link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/jquery.jqRangeSlider.css" />
+    	<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.jqChart.min.js" type="text/javascript"></script>
+    	<script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.jqRangeSlider.min.js" type="text/javascript"></script>
+    	<!--[if IE]><script lang="javascript" type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/excanvas.js"></script><![endif]-->
+        
+        
+            <script lang="javascript" type="text/javascript">  
+		        $(document).ready(function () {
+		            var background = {
+		                type: 'linearGradient',  
+		                x0: 0,
+		                x1: 0, 
+		                colorStops: [{ offset: 0, color: '#d2e6c9' }]  
+		            };
+		            $('#jqChart').jqChart({
+		                title: { text: '雷达图' },  
+		                border: { strokeStyle: '#6ba851' },  
+		                background: background,  
+		                axes: [
+		                        {
+		                            type: 'categoryAngle',  
+		                            categories: [<?php if(is_array($radar_cat)): foreach($radar_cat as $key=>$nv): ?>'<?php echo ($nv); ?>',<?php endforeach; endif; ?>]  
+		                        },
+		                        {
+		                            type: 'linearRadius',
+		                            renderStyle: 'polygon',
+		                            lineWidth: '5',
+		                            minimum : 0,
+		                            maximum : 100,
+		                            interval : 20,
+		                            majorTickMarks: { visible: true }  
+		                        }
+		                      ],  
+		                series: [
+		                            {
+		                                title : ' ',  
+		                                type: 'radarArea',  
+		                                data: [<?php if(is_array($radar_val)): foreach($radar_val as $key=>$val): echo ($val); ?>,<?php endforeach; endif; ?>],  
+		                                fillStyle: 'rgba(65,140,240,0.75)'  
+		                            }
+		                        ]
+		            });
+		        });  
+		    </script>
+                
+                <div>
+			        <div id="jqChart" style="width: 500px; height: 300px; margin-top: 24px;">
+			        </div>
+			    </div>
+        
         <fieldset class="row" style="margin: 0 8%">
-            <?php if(is_array($reslist)): foreach($reslist as $key=>$vo): ?><div class=".">
+            <?php if(is_array($reslist)): foreach($reslist as $k=>$vo): ?><div class=".">
                     <h3><?php echo ($vo["wj_name"]); ?></h3>
                 </div>
                 <?php if(is_array($vo["pg_qa"])): foreach($vo["pg_qa"] as $key=>$vqa): if(!empty($vqa["question"])): ?><h4><strong>问题:<?php echo ($vqa["question"]); ?></strong></h4><?php endif; ?>
@@ -487,16 +538,17 @@
                             <?php if(is_array($vqa["answer"])): foreach($vqa["answer"] as $key=>$va): echo ($va); ?> <?php if(!empty($va)): ?><br><?php endif; endforeach; endif; ?>
                         </div>
                     </div><?php endif; ?>
-                    <?php if(!empty($vqa["defen"])): ?><h4>得分:<strong><?php echo ($vqa["defen"]); ?></strong></h4><?php endif; endforeach; endif; ?>
-                <div class=".">
+                    <?php if(($vqa["defen"] > 0) OR ($vqa["defen"] == '0')): ?><h4>得分:<strong><?php echo ($vqa["defen"]); ?></strong></h4><?php endif; endforeach; endif; ?>
+                <?php if(($vo["pg_sum"] > 0) OR ($vo["pg_sum"] == '0')): ?><div class=".">
                     <h4>总分:<strong><?php echo ($vo["pg_sum"]); ?></strong></h4>
-                </div>
+                </div><?php endif; ?>
                 <div class=".">
                     <h4>结论:<strong><?php echo ($vo["pg_result"]); ?></strong></h4>
                 </div>
-                <div class=".">
+                <?php if(!empty($vo["remark"])): ?><div class=".">
                     <h4>备注:<strong><?php echo ($vo["remark"]); ?></strong></h4>
-                </div><?php endforeach; endif; ?>
+                </div><?php endif; endforeach; endif; ?>
+            
         </fieldset>
     </div>
 </div>
