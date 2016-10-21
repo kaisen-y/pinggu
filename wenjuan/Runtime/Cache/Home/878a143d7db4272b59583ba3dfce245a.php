@@ -512,7 +512,7 @@
 		                      ],  
 		                series: [
 		                            {
-		                                title : ' ',  
+		                                title : '整体',  
 		                                type: 'radarArea',  
 		                                data: [<?php if(is_array($radar_val)): foreach($radar_val as $key=>$val): echo ($val); ?>,<?php endforeach; endif; ?>],  
 		                                fillStyle: 'rgba(65,140,240,0.75)'  

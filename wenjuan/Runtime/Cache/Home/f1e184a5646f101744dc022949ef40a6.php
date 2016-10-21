@@ -40,7 +40,7 @@
 
         <div class="header-right pull-right" style="padding: 10px 50px;">
             <h4 style="color: #333">
-                欢迎,<?php echo ($member_name); ?><a href="/user/logout" style="color:#fff;">退出</a>
+                欢迎<?php echo ($member_name); ?>,<a href="/user/logout" style="color:#fff;">退出</a>
             </h4>
         </div>
     </nav>
@@ -62,22 +62,32 @@
 </nav>
 <div class="col-md-10" style="padding: 0">
 <div class="container">
-<?php if(is_array($list)): foreach($list as $key=>$vo): ?><div class="bs-example container">
+<?php if(is_array($list)): foreach($list as $key=>$vo): ?><div class="bs-example container" id="queryForm">
 		<table class="table table-striped">
 			<thead>
 			<tr>
 				<th>姓名</th>
-				<th>查看详情</th>
+				<th>操作</th>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
 				<td><?php echo ($vo["name"]); ?></td>
-				<td><a href="/questionnaire/careinfo/care_id/<?php echo ($vo["id"]); ?>">查看详情</a></td>
+				<td><a href="/questionnaire/careinfo/care_id/<?php echo ($vo["id"]); ?>">查看详情</a>
+					<button onclick="exportCareInfo(<?php echo ($vo["id"]); ?>)">导出</button>
+				</td>
 			</tr>
 			</tbody>
 		</table>
 	</div><?php endforeach; endif; ?>
 </div></div>
+<script>
+function exportCareInfo(id){
+	var input = "<input type='hidden' name='care_id' value='"+id+"' />";
+	$('#queryForm').after('<form id="exportForm" action="/questionnaire/export" method="post" style="display:none;" >'+input+"</form>");
+	$('#exportForm').submit();
+	$('#exportForm').remove();
+}
+</script>
 </body>
 </html>

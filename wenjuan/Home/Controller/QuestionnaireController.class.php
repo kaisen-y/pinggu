@@ -26,12 +26,10 @@ class QuestionnaireController extends BaseController {
 	
 	public function index(){
 		redirect('/user');//暂停自定评估项目
-		$userModel = new UserModel();
-		$user = $userModel->getUserSession();
 
 		$wenjuanModel = new WenjuanModel();
 		
-		$list = $wenjuanModel->getlist($user['member_id']);
+		$list = $wenjuanModel->getlist($this->userSession['member_id']);
 		$data['care_id'] = I('get.care_id');
 		$data['list'] = $list;
 		$data['pageTitle'] = '我创建的评估项目';
@@ -49,13 +47,11 @@ class QuestionnaireController extends BaseController {
 			$name = I('post.name');
 			$wj_desc = I('post.desc');
 			$remark = I('post.remark');
-			$userModel = new UserModel();
-			$user = $userModel->getUserSession();
 			$data = array(
 				'name'		=> $name,
 				'wj_desc'	=> $wj_desc,
 				'remark'	=> $remark,
-				'uid'		=> $user['member_id']
+				'uid'		=> $this->userSession['member_id']
 			);
 			$wenjuanModel = new WenjuanModel();
 			$resp = $wenjuanModel->create($data);
@@ -72,9 +68,7 @@ class QuestionnaireController extends BaseController {
 				redirect('/questionnaire');
 			}
 			$wenjuan = $wjModel->getOne($id);
-			$userModel = new UserModel();
-			$user = $userModel->getUserSession();
-			if(!$wenjuan || $wenjuan['uid'] != $user['member_id'] ){
+			if(!$wenjuan || $wenjuan['uid'] != $this->userSession['member_id'] ){
 				redirect('/questionnaire');
 			}else{
 				$data = $wenjuan;
@@ -115,9 +109,7 @@ class QuestionnaireController extends BaseController {
 			$wjModel = new WenjuanModel();
 			$wj_id = I('get.wj_id');
 			$wenjuan = $wjModel->getOne($wj_id);
-			$userModel = new UserModel();
-			$user = $userModel->getUserSession();
-			if(!$wenjuan || $wenjuan['uid'] != $user['member_id'] ){
+			if(!$wenjuan || $wenjuan['uid'] != $this->userSession['member_id'] ){
 				redirect('/questionnaire');
 			}
 			$data['wj_id'] = $wenjuan['wj_id'];
@@ -181,9 +173,7 @@ class QuestionnaireController extends BaseController {
 		}
 		$wjModel = new WenjuanModel();
 		$wenjuan = $wjModel->getOne($id);
-		$userModel = new UserModel();
-		$user = $userModel->getUserSession();
-		if(!$wenjuan || $wenjuan['uid'] != $user['member_id'] ){
+		if(!$wenjuan || $wenjuan['uid'] != $this->userSession['member_id'] ){
 			redirect('/questionnaire');
 		}else{
 			$data = $wenjuan;
@@ -202,10 +192,8 @@ class QuestionnaireController extends BaseController {
 			$this->display();
 		}else{
 
-			$userModel = new UserModel();
-			$user = $userModel->getUserSession();
 			$arr = array(
-				'uid'				=> $user['member_id'],
+				'uid'				=> $this->userSession['member_id'],
 				'name'				=> I('post.name'),
 				'sex'				=> I('post.sex'),
 				'brith'				=> I('post.brith'),
@@ -346,7 +334,9 @@ class QuestionnaireController extends BaseController {
 				$pg_sum = 0;
 				if(is_array($pg_qa)){
 					foreach ($pg_qa as $v){
-						$pg_sum = $pg_sum+$v['defen'];
+						if($v['defen']){
+							$pg_sum = $pg_sum+$v['defen'];
+						}
 					}
 				}
 			}
@@ -359,10 +349,8 @@ class QuestionnaireController extends BaseController {
 				$remark = $str;
 			}
 
-			$userModel = new UserModel();
-			$user = $userModel->getUserSession();
 			$data = array(
-					'uid'				=> $user['member_id'],
+					'uid'				=> $this->userSession['member_id'],
 					'care_id'			=> I('post.care_id'),
 					'wj_name'			=> I('post.wj_name'),
 					'wj_id'				=> $wj_id,
@@ -384,10 +372,12 @@ class QuestionnaireController extends BaseController {
 	
 
 	public function mycare(){
-		$userModel = new UserModel();
-		$user = $userModel->getUserSession();
+		if($this->userSession['member_id']<1){
+			redirect('/user/login');
+		}
+		
 		$crvs = new CaregiversModel();
-		$list = $crvs->getlist($user['member_id']);
+		$list = $crvs->getlist($this->userSession['member_id']);
 		$data['list'] = $list;
 		$data['pageTitle'] = '被评估者列表';
 		$this->assign($data);
@@ -423,6 +413,12 @@ class QuestionnaireController extends BaseController {
 		}else{
 			redirect('/questionnaire/mycare');
 		}
+	}
+	
+	public function export(){
+		$list = array(array('name'=>'xxx1','order_id'=>'xxx11'),array('name'=>'xxx2','order_id'=>'xxx22'));
+		$field = array('name'=>'名称','order_id'=>'订单号');
+		export_csv($list,$field,'care_info');
 	}
 	
 }
