@@ -348,6 +348,10 @@ class QuestionnaireController extends BaseController {
 				}
 				$remark = $str;
 			}
+			$percentage = 0;
+			if($pg_sum){
+				$percentage = $pg_sum*100/I('post.pgcount');
+			}
 
 			$data = array(
 					'uid'				=> $this->userSession['member_id'],
@@ -356,6 +360,7 @@ class QuestionnaireController extends BaseController {
 					'wj_id'				=> $wj_id,
 					'pg_qa'				=> $pg_qa,
 					'pg_sum'			=> $pg_sum,
+					'pg_percentage'		=> $percentage,
 					'pg_result'			=> I('post.jielun'),
 					'remark'			=> $remark,
 			);
@@ -406,7 +411,7 @@ class QuestionnaireController extends BaseController {
 			$data['reslist'] = $reslist;
 			foreach ($reslist as $v){
 				$data['radar_cat'][] = str_replace('评估', '', $v['wj_name']);
-				$data['radar_val'][] = $v['pg_sum'];
+				$data['radar_val'][] = $v['pg_percentage'];
 			}
 			$this->assign($data);
 			$this->display();

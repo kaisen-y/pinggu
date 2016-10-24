@@ -120,7 +120,7 @@
                             <input name="pg_qa[2][answer][]" value="C、交流困难，不能表达和理解；(重度异常&nbsp;2分)" type="hidden" />
                         </ul>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12"><input type="hidden" value="22" name="pgcount">
                         <p class="duoxuan">评分标准：0 - 1分情绪行为正常&nbsp;&nbsp;<br>2 - 5分情绪行为轻度异常&nbsp;&nbsp;<br> 6 - 14分情绪行为中度异常&nbsp;&nbsp;<br>15分或以上情绪行为重度异常
                         </p>
                     </div>

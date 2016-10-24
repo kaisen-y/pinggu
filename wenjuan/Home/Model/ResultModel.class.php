@@ -17,6 +17,7 @@ class ResultModel extends Model {
 					'wj_name'			=> $data['wj_name'],
 					'pg_qa'				=> json_encode($data['pg_qa']),
 					'pg_sum'			=> $data['pg_sum'],
+					'pg_percentage'		=> $data['pg_percentage'],
 					'pg_result'			=> $data['pg_result'],
 					'remark'			=> $data['remark'],
 					'uid'				=> $data['uid'],

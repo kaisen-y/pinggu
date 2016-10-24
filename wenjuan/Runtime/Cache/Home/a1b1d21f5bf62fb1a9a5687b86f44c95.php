@@ -107,7 +107,7 @@
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[3][answer]" value="">
                         </label>
-                    </div>
+                    </div><input type="hidden" value="35" name="pgcount">
                     <div class="form-group col-md-12">
                         <h4>治疗需要</h4>
                     </div>
