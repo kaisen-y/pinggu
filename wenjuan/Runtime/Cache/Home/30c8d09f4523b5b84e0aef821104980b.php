@@ -74,7 +74,7 @@
                     <div class="form-group col-md-12">
                         <h4><strong>情绪</strong></h4>
                         <div class="col-md-12 ">对客观事物的主观态度体验是否与实际相符，能否被常人理解。
-                        <input type="text" class="form-control" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[0][defen]" value="">分
+                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[0][defen]" value="">分
                         <input type="hidden" name="pg_qa[0][question]" value="情绪: 对客观事物的主观态度体验是否与实际相符，能否被常人理解。">
                         </div>
                         <ul style="list-style: none;">
@@ -92,7 +92,7 @@
                         <h4><strong>行为</strong></h4>
                         <div class="col-md-12 ">动作行为表现有否异常。
                         <input type="hidden" name="pg_qa[1][question]" value="行为: 动作行为表现有否异常。">
-                        <input type="text" class="form-control" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[1][defen]" value="">分
+                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[1][defen]" value="">分
                         </div>
                         <ul style="list-style: none;">
                             <li>A、行为正常；<strong>(正常&nbsp;0分)</strong></li>
@@ -109,7 +109,7 @@
                         <h4><strong>沟通能力</strong></h4>
                         <div class="col-md-12">在交流中能否互相理解。
                         <input type="hidden" name="pg_qa[2][question]" value="沟通能力: 在交流中能否互相理解。">
-                        <input type="text" class="form-control" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[2][defen]" value="">分
+                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[2][defen]" value="">分
                         </div>
                         <ul style="list-style: none;">
                             <li>A、理解准确，表达清晰；<strong>(正常&nbsp;0分)</strong></li>
@@ -181,19 +181,19 @@
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。 静态平衡。被测者能够在无外乱或躯干动作状态下保持端坐位；<strong>(1级平衡)</strong>">
+                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。 静态平衡。被测者能够在无外乱或躯干动作状态下保持端坐位；(1级平衡)">
                                 静态平衡。被测者能够在无外乱或躯干动作状态下保持端坐位；<strong>(1级平衡)</strong>
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。自动动态平衡。被测者能够在无外乱状态下使重心向各方向超过基底面，并能保持平衡；<strong>(2级平衡)</strong>">
+                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。自动动态平衡。被测者能够在无外乱状态下使重心向各方向超过基底面，并能保持平衡；(2级平衡)">
                                 自动动态平衡。被测者能够在无外乱状态下使重心向各方向超过基底面，并能保持平衡；<strong>(2级平衡)</strong>
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。他动动态平衡。被测者能够在各方向外乱干扰下保持平衡；<strong>(3级平衡)</strong>">
+                                <input type="radio" name="pg_qa[3][question]"  value="坐位平衡：被测者取端坐位。双足接地。双手置于腿上。腰背自然伸直，双眼平视前方。他动动态平衡。被测者能够在各方向外乱干扰下保持平衡；(3级平衡)">
                                 他动动态平衡。被测者能够在各方向外乱干扰下保持平衡；<strong>(3级平衡)</strong>
                             </label>
                         </div>
@@ -364,6 +364,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$('.num').change(function(){
+	var sum = 0;
+	$('.num').each(function(){
+		if(parseFloat(this.value)){
+			sum += parseFloat(this.value);
+		}
+	});
+	$('#sum').val(sum);
+});
+</script>
 
 </body>
 </html>

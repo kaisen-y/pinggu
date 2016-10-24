@@ -416,8 +416,10 @@ class QuestionnaireController extends BaseController {
 	}
 	
 	public function export(){
+		
 		$list = array(array('name'=>'xxx1','order_id'=>'xxx11'),array('name'=>'xxx2','order_id'=>'xxx22'));
 		$field = array('name'=>'名称','order_id'=>'订单号');
+		$fieldTab = array('order_id');
 		export_csv($list,$field,'care_info');
 	}
 	
