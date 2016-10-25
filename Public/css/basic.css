@@ -247,6 +247,15 @@ body {
 .qsxw{
     width: 55%;
 }
+#pass{
+    position:absolute;
+    left:39px;
+    top:0;
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index:2;}
+
+
 /*datepicker*/
 .demo h4{height:32px; line-height:32px; font-size:14px}
 .demo h4 span{font-weight:500; font-size:12px}
@@ -262,8 +271,21 @@ input{ height:20px; line-height:20px; padding:2px; border:1px solid #d3d3d3}
 .radio{
     margin-left: 25px;
 }
-.form-group!important{
-margin-bottom:15px
+.ui-widget-content{
+    border: none;
+}
+.form-horizontal .form-group {
+    margin: 0 0 15px;
+}
+.form-control   !important{
+    box-shadow: inset 0 0px 1px rgba(0,0,0,.4);
+    -webkit-box-shadow: inset 0 0px 1px rgba(0,0,0,.4);
+}
+.canjiren{
+     display: none;
+ }
+.other{
+    display: none;
 }
 @media screen and (max-width:500px){
     .ui-datepicker-trigger{

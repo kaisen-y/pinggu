@@ -20,7 +20,8 @@
                         <div class="col-xs-12  ">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                <input type="text" class="form-control" name="password" placeholder="请输入密码" type="password" maxlength="50">
+                                <input type="password" class="form-control" name="password" id="hint_pass" placeholder="请输入密码" type="password" maxlength="30" width="80%">
+
                             </div>
                         </div>
                     </div>
@@ -46,6 +47,7 @@
     </div>
 </div>
 <script>
+
     //自动跳转
     function callback(){
         location.href = '/user';

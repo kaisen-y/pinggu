@@ -10,12 +10,11 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/font-awesome.css" rel="stylesheet" />
-    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/basic.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" rel="stylesheet" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/datepicker.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/basic.css" rel="stylesheet" />
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
@@ -25,116 +24,101 @@
 <!-- METISMENU SCRIPTS -->
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
 </head>
 <body>
 
 <div style="margin: -20px 0px;;font-family: Microsoft YaHei;">
-    <header class="header row" style="background: #3498db;color: #fff;">
+    <header class="header row" style="background: #3498db;color: #fff;margin: 0">
         <nav class="navbar navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header col-md-3">
                 <div class="col-md-offset-2">
                     <a class="navbar-brand" href="index.html">评估系统</a>
                 </div>
             </div>
-
             <div class="header-right">
-                <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
+                <a href="/user" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
                 <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
-
             </div>
         </nav>
     </header>
-    <nav class="navbar-default navbar-side col-md-2" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="main-menu">
-                <!--li>
-                    <a href="/questionnaire">我的评估项目</a>
-                </li-->
-                <li>
-                    <a href="/questionnaire/care" >新增被评估者</a>
-                </li>
-                <li>
-                    <a href="/questionnaire/mycare" >被评估者</a>
-                </li>
-            </ul>
+    <div class="progress" style="margin: 5% 20px">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
         </div>
-    </nav>
-    <div class="col-md-10" style="padding: 0">
+    </div>
+    <div class="col-md-10 col-md-offset-1" style="padding: 0">
 
         <div class="">
-            <div class=".">
+            <div class="." style="margin-bottom: 15px;padding-left: 3%;">
                 <h3>健康风险评估</h3>
             </div>
-            <form class="Huiform form-horizontal" id="commentForm" action="" method="post">
-                <fieldset class="row">
+            <form class="Huiform form-horizontal" id="commentForm" action="" method="post"style="margin-left: 5%;">
+                <fieldset class="row"style="margin: 0">
                     <div class="form-group col-md-12">
                         <h4 class="text-center">健康信息</h4>
                         <hr>
                     </div>
                     <input type='hidden' name="care_id" value="<?php echo ($care_id); ?>">
-                    <div class="col-xs-12">
-                        <div class="form-group col-md-4">
-                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
-                            <div class="col-md-7" style="padding-right: 0">
-                                <input  type="text" class="form-control" name="height" >
-                            </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+                    <div class="form-group col-md-4">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding: 0;padding-top: 7px;">身高：</label>
+                        <div class="col-md-7 col-xs-7" style="padding-right: 0">
+                            <input  type="text" class="form-control" name="height" data-rule-number="true" data-msg-required="请输入正确的身高" >
                         </div>
-                        <div class="form-group col-md-4">
-                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
-                            <div class="col-md-7" style="padding-right: 0">
-                                <input  type="text" class="form-control" name="weight" >
-                            </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0">kg</label>
+                        <label class="col-md-1 col-xs-2 control-label" style="padding-left: 0;font-size: 20px; padding-top: 4px;">cm</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding: 0;padding-top: 7px;">体重：</label>
+                        <div class="col-md-7 col-xs-7" style="padding-right: 0">
+                            <input  type="text" class="form-control" name="weight"data-rule-number="true" data-msg-required="请输入正确的体重"  >
                         </div>
-                        <div class="form-group col-md-4">
-                            <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
-                            <div class="col-md-7" style="padding-right: 0">
-                                <input name="neck" type="text" class="form-control" >
-                            </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+                        <label class="col-md-1 col-xs-2 control-label" style="padding-left: 0;font-size: 20px; padding-top: 4px;">kg</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding: 0;padding-top: 7px;">颈围：</label>
+                        <div class="col-md-7 col-xs-7" style="padding-right: 0">
+                            <input name="neck" type="text" class="form-control" data-rule-number="true" data-msg-required="请输入正确的颈围" >
                         </div>
+                        <label class="col-md-1 col-xs-2 control-label" style="padding-left: 0;font-size: 20px; padding-top: 4px;">cm</label>
                     </div>
 
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
-                        <div class="col-md-7" style="padding-right: 0">
-                            <input name="waist" type="text" class="form-control" >
+                    <div class="form-group col-md-4">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding: 0;padding-top: 7px;">腰围：</label>
+                        <div class="col-md-7 col-xs-7" style="padding-right: 0">
+                            <input name="waist" type="text" class="form-control" data-rule-number="true" data-msg-required="请输入正确的腰围" >
                         </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">cm</label>
+                        <label class="col-md-1 col-xs-2 control-label" style="padding-left: 0;font-size: 20px; padding-top: 4px;">cm</label>
                     </div>
-                    <div class="form-group col-md-2">
-                        <label class="col-md-4 control-label" style="padding: 0;padding-top: 7px;">体温：</label>
-                        <div class="col-md-7" style="padding-right: 0">
-                            <input name="temperature" type="text" class="form-control" >
+                    <div class="form-group col-md-4">
+                        <label class="col-md-4 col-xs-3 control-label" style="padding: 0;padding-top: 7px;">体温：</label>
+                        <div class="col-md-7 col-xs-7" style="padding-right: 0">
+                            <input name="temperature" type="text" class="form-control"data-rule-number="true" data-msg-required="请输入正确的体温" >
                         </div>
-                        <label class="col-md-1 control-label" style="padding-left: 0">℃</label>
+                        <label class="col-md-1 col-xs-2 control-label" style="padding-left: 0;font-size: 20px; padding-top: 4px;">℃</label>
                     </div>
-                    <div class="form-group col-md-6">
-                        <div class="col-md-6">
-                            <label class="col-md-4 control-label">脉搏：</label>
-                            <div class="col-md-4" style="padding-right: 0">
+                    <div class="form-group col-md-12" style="padding: 0;">
+                        <div class="col-md-6" style="padding: 0;" >
+                            <label class="col-md-4 col-xs-3 control-label">脉搏：</label>
+                            <div class="col-md-4 col-xs-7" style="padding-right: 0">
                                 <input name="maibo" type="text" class="form-control" >
                             </div>
-                            <label class="col-md-3 control-label" style="padding-left: 0">次/分</label>
+                            <label class="col-md-3 col-xs-2 control-label" style="padding-left: 0">次/分</label>
                         </div>
-                        <div class="radio col-md-2">
+                        <div class="radio col-md-2 col-xs-5">
                             <label>
                                 <input type="radio" name="maibokl" id="maibo1" value="规律">
                                 规律
                             </label>
                         </div>
-                        <div class="radio col-md-2">
+                        <div class="radio col-md-2 col-xs-5">
                             <label>
                                 <input type="radio" name="maibokl" id="maibo2" value="不规律">
                                 不规律
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" style="padding: 0;">
                         <label class="col-md-3">血糖：</label>
                         <div class="col-md-8" >
                             <select class="form-control" name="xuetang">
@@ -144,7 +128,7 @@
                         随机描述<input type="text" name="xuetangdes" />
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">血压：</label>
                         <div class="radio col-md-1">
                             <label>
@@ -161,68 +145,52 @@
                         <div class="col-md-4">
                             <label class="col-md-4 control-label">左：</label>
                             <div class="col-md-7" >
-                                <input  type="text" name="xueya_left_l" class="form-control col-md-5" style="width: 40%">
-                                <span class="col-md-1">/</span>
-                                <input  type="text" name="xueya_left_r" class="form-control col-md-5" style="width: 40%">
+                                <input  type="text" name="xueya_left_l" class="form-control col-md-5 col-xs-5" style="width: 40%">
+                                <span class="col-md-1 col-xs-1" style="padding: 6px;font-size: 32px;">/</span>
+                                <input  type="text" name="xueya_left_r" class="form-control col-md-5 col-xs-5" style="width: 40%">
                             </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0"> mmHg</label>
+                            <label class="col-md-1 col-xs-1 control-label" style="padding-left: 0"> mmHg</label>
                         </div>
                         <div class="col-md-4">
                             <label class="col-md-4 control-label">右：</label>
                             <div class="col-md-7" >
-                                <input  type="text"  name="xueya_right_l" class="form-control col-md-5" style="width: 40%">
-                                <span class="col-md-1">/</span>
-                                <input  type="text"  name="xueya_right_r" class="form-control col-md-5" style="width: 40%">
+                                <input  type="text"  name="xueya_right_l" class="form-control col-md-5 col-xs-5" style="width: 40%">
+                                <span class="col-md-1 col-xs-1" style="padding: 6px;font-size: 32px;">/</span>
+                                <input  type="text"  name="xueya_right_r" class="form-control col-md-5 col-xs-5" style="width: 40%">
                             </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0"> mmHg</label>
+                            <label class="col-md-1 col-xs-1 control-label" style="padding-left: 0"> mmHg</label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">血脂：</label>
                         <div class="col-md-11">
                             <div class="col-md-6" style="margin-bottom: 10px">
                                 <label class="col-md-3 control-label">胆固醇：</label>
                                 <div class="col-md-8">
-                                    <select class="form-control" name="xuezhi_d">
-                                        <option value="高">高</option>
-                                        <option value="低">低</option>
-                                        <option value="正常">正常</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="xuezhi_d" >
                                 </div>
                             </div>
                             <div class="col-md-6" style="margin-bottom: 10px">
                                 <label class="col-md-3 control-label">甘油三酯：</label>
                                 <div class="col-md-8">
-                                    <select class="form-control" name="xuezhi_g">
-                                        <option value="高">高</option>
-                                        <option value="低">低</option>
-                                        <option value="正常">正常</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="xuezhi_g" >
                                 </div>
                             </div>
                             <div class="col-md-6" style="margin-bottom: 10px">
                                 <label class="col-md-3 control-label">高密度脂蛋白：</label>
                                 <div class="col-md-8">
-                                    <select class="form-control" name="xuezhi_gz">
-                                        <option value="高">高</option>
-                                        <option value="低">低</option>
-                                        <option value="正常">正常</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="xuezhi_gz" >
                                 </div>
                             </div>
                             <div class="col-md-6" style="margin-bottom: 10px">
                                 <label class="col-md-3 control-label">低密度脂蛋白：</label>
                                 <div class="col-md-8">
-                                    <select class="form-control" name="xuezhi_dz">
-                                        <option value="高">高</option>
-                                        <option value="低">低</option>
-                                        <option value="正常">正常</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="xuezhi_dz" >
                                 </div>
                             </div>
                             <label class="col-md-2 control-label text-left" for="year">报告日期：</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="xuezhi_date" id="year" name="sex" style="display: inline;width: 80%" >
+                                <input type="text" class="form-control" name="xuezhi_date" id="year" name="sex" style="display: inline;width: 70%" >
                             </div>
                         </div>
                     </div>
@@ -236,20 +204,20 @@
                                     <option value="吸烟">吸烟</option>
                                 </select>
                             </div>
-                            <div class="col-md-5" >
+                            <div class="col-md-5 col-xs-8" >
                                 <input  type="text" name="xiyan_times" class="form-control" >
                             </div>
-                            <label class="col-md-1 control-label" style="padding-left: 0">支/天</label>
+                            <label class="col-md-1 col-xs-4 control-label" style="padding-left: 0">支/天</label>
                         </div>
                     </div>
                     <div class="form-group col-md-12">
                         <h4 class="text-center">营养状况</h4>
                         <hr>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">饮食习惯：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="yinshixiguan[]" value="荤素均衡"> 荤素均衡
                             </label>
                             <label class="checkbox-inline">
@@ -276,10 +244,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">早餐：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="zaocan[]" value="奶"> 奶
                             </label>
                             <label class="checkbox-inline">
@@ -315,10 +283,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">午餐：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="wucan[]" value="鱼"> 鱼
                             </label>
                             <label class="checkbox-inline">
@@ -348,10 +316,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">晚餐：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="wancan[]" value="鱼"> 鱼
                             </label>
                             <label class="checkbox-inline">
@@ -381,10 +349,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">加餐：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="jiacan[]" value="水果"> 水果
                             </label>
                             <label class="checkbox-inline">
@@ -399,10 +367,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">饮水：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="yinshui[]" value="水"> 水
                             </label>
                             <label class="checkbox-inline">
@@ -417,7 +385,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">配餐需求：</label>
                         <div class="col-md-10">
                             <label>
@@ -432,10 +400,10 @@
                         <h4 class="text-center">自我锻炼</h4>
                         <hr>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">运动方式：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="yudongfangshi[]" value="散步"> 散步
                             </label>
                             <label class="checkbox-inline">
@@ -450,27 +418,27 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label">运动频次：</label>
                         <div class="col-md-5">
-                            <label class="col-md-3 control-label">每周运动：</label>
-                            <div class="col-md-4" >
+                            <label class="col-md-3 col-xs-5 control-label">每周运动：</label>
+                            <div class="col-md-4 col-xs-5" >
                                 <input  type="text" name="zhoupl" class="form-control" >
                             </div>
-                            <label class="col-md-3 control-label" style="padding-left: 0">次</label>
+                            <label class="col-md-3 col-xs-2 control-label" style="padding-left: 0">次</label>
                         </div>
                         <div class="col-md-5">
-                            <label class="col-md-3 control-label">每次：</label>
-                            <div class="col-md-4">
+                            <label class="col-md-3 col-xs-5 control-label">每次：</label>
+                            <div class="col-md-4 col-xs-5">
                                 <input  type="text" name="timesmin" class="form-control" >
                             </div>
-                            <label class="col-md-3 control-label" style="padding-left: 0">分钟</label>
+                            <label class="col-md-3 col-xs-2 control-label" style="padding-left: 0">分钟</label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">运动后感觉：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="yundonghou[]" value="神清气爽"> 神清气爽
                             </label>
                             <label class="checkbox-inline">
@@ -495,10 +463,10 @@
                         <h4 class="text-center">睡眠状况</h4>
                         <hr>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">睡眠情况：</label>
                         <div class="col-md-10">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="shuimianqingkuang[]" value="良好"> 良好
                             </label>
                             <label class="checkbox-inline">
@@ -515,7 +483,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">睡眠质量：</label>
                         <div class="col-md-10">
                             <label class="checkbox-inline">
@@ -530,10 +498,10 @@
                         <h4 class="text-center">疾病情况</h4>
                         <hr>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">疾病状态：</label>
                         <div class="col-md-11">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="jibing[]" value="无"> 无
                             </label>
                             <label class="checkbox-inline">
@@ -623,10 +591,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">目前症状 ：</label>
                         <div class="col-md-11">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="muqian[]" value="无"> 无
                             </label>
                             <label class="checkbox-inline">
@@ -731,7 +699,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">并发症：</label>
                         <div class="col-md-11">
                             <label class="checkbox-inline col-md-4">
@@ -748,16 +716,16 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-2 control-label" style="padding-right: 0px">疾病及症状描述：</label>
                         <div class="col-md-10">
                             <textarea class="form-control" name="miaoshu" rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" style="padding: 0;">
                         <label class="col-md-1 control-label" style="padding-right: 10px">治疗情况：</label>
                         <div class="col-md-11">
-                            <label class="checkbox-inline">
+                            <label class="checkbox-inline" style="margin-left: 10px;">
                                 <input type="checkbox" name="zhiliao[]" value="药物治疗"> 药物治疗：
                             </label>
                             <label class="checkbox-inline">
@@ -778,6 +746,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.validate.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/yanzheng.js" charset="gbk"></script>
 <script type="text/javascript">
     $(function(){
         $("#year").datepicker({
@@ -786,33 +756,13 @@
             buttonImageOnly: true,
             dateFormat: 'yy-mm-dd'
         });
-        $("#date_2").datepicker({
-            showOn: "button",
-            buttonImage: "<?php echo C('RES_DOMAIN');?>/Public/images/calendar.gif",
-            buttonImageOnly: true,
-            dateFormat: 'yy-mm-dd'
-        });
     });
-</script>
-<script>
     $.validator.setDefaults({
         submitHandler: function() {
             alert("提交事件!");
         }
     });
-    $().ready(function() {
-        $("#commentForm").validate({
-            rules: {
-                sfz: {
-                required: true,
-                minlength:18,
-                }
-            },
-            messages: {
-                sfz: "请输入身份号",
-            }
-        });
-    });
+
 </script>
 
 </body>

@@ -421,11 +421,45 @@ class QuestionnaireController extends BaseController {
 	}
 	
 	public function export(){
+		$care_id = intval(I('post.care_id'));
+		if($care_id > 0){
+			$crvs = new CaregiversModel();
+			$care = $crvs->getOne($care_id);
+			$sex = array(1=>'男',2=>'女',3=>'其他');
+			$marr= array(1=>'未婚',2=>'已婚',3=>'丧偶',4=>'离婚');
+			$edu = array(0=>'无',1=>'小学',2=>'初中',3=>'高中',4=>'大专',5=>'本科或以上');
+			$care['sex'] = $sex[$care['sex']];
+			$care['marriage'] = $marr[$care['marriage']];
+			$care['education'] = $edu[$care['education']];
+				
+			$jkpgModel = new JiankangpingguModel();
+			$jkpg = $jkpgModel->getOne($care_id);
+			$jkpg['peican'] = $jkpg['peican']==1?'配餐':'不需要';
+			$resultModel = new ResultModel();
+			$reslist = $resultModel->getByCare_id($care_id);
+			$data['care'] = $care;
+			$data['jkpg'] = $jkpg;
+			$data['reslist'] = $reslist;
+			foreach ($reslist as $v){
+				$data['radar_cat'][] = str_replace('评估', '', $v['wj_name']);
+				$data['radar_val'][] = $v['pg_percentage'];
+			}
 		
-		$list = array(array('name'=>'xxx1','order_id'=>'xxx11'),array('name'=>'xxx2','order_id'=>'xxx22'));
-		$field = array('name'=>'名称','order_id'=>'订单号');
-		$fieldTab = array('order_id');
-		export_csv($list,$field,'care_info');
+			unset($data['care']['id'], $data['care']['uid'],$data['care']['addtime'],$data['jkpg']['id'],$data['jkpg']['care_id'],$data['jkpg']['addtime']);
+			$list = array(array_merge($data['care'], $data['jkpg']));
+			$field = array('name'=>'姓名','sex'=>'性别','brith'=>'生日','nation'=>'民族','origin'=>'籍贯','religion'=>'宗教信仰',
+  							'credentials_type'=>'证件类型','credentials_no'=>'证件号码', 'ss_card'=>'社保卡号','education'=>'学历','marriage'=>'婚姻状况','careers'=>'既往职业',
+  							'registry_add'=>'户籍所在地','address'=>'现居地','add_hospital'=>'住所附近医院','hospital'=>'习惯就医医院','tellphone'=>'座机','mobile'=>'手机',
+  							'disability_no'=>'残疾证号','disability_type'=>'残疾类别','disability_level'=>'残疾等级','disability_time'=>'致残时间','disability_cause'=>'致残原因',
+  							'jjlx_name'=>'紧急联系人','jjlx_guanxi'=>'紧急联系人关系','jjlx_phone'=>'紧急联系人电话','jjlx_email'=>'紧急联系人邮箱','jjlx_addr'=>'紧急联系人地址','jjlx_remark'=>'紧急联系人备注',
+  							'jingjilaiyuan'=>'经济来源','jingjitiaojian'=>'经济条件','juzhu'=>'居住状况','anyang'=>'安养状况','zhufang'=>'住房性质','xiuxian'=>'休闲娱乐','wenhuaxuqiu'=>'文化需求',
+  							'teshugongxian'=>'特殊供献','remark'=>'备注','height'=>'身高cm','weight'=>'体重kg','neck'=>'颈围cm','waist'=>'腰围cm','temperature'=>'体温摄氏度','maibo'=>'脉搏',
+  							'xueya'=>'血压','xuetang'=>'血糖','xuezhi'=>'血脂','xiyan'=>'吸烟','yinshixiguan'=>'饮食习惯','zaocan'=>'早餐','wucan'=>'午餐','wancan'=>'晚餐',
+  							'jiacan'=>'加餐','yinshui'=>'饮水','peican'=>'配餐','yundongpinglv'=>'运动频率','yudongfangshi'=>'运动方式','yundonghou'=>'运动后感觉','shuimianqingkuang'=>'睡眠情况',
+ 							'shuimianzhiliang'=>'睡眠质量','jibing'=>'疾病情况','muqian'=>'目前状态','bingfa'=>'并发症','miaoshu'=>'症状描述','zhiliao'=>'治疗情况',);
+			$fieldTab = array('credentials_no','ss_card','mobile','disability_no','jjlx_phone');
+			export_csv($list,$field,'care_info',$fieldTab);
+		}
 	}
 	
 }

@@ -10,12 +10,11 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/font-awesome.css" rel="stylesheet" />
-    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/basic.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo C('RES_DOMAIN');?>/Public/css/main.css" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/common.css" rel="stylesheet" />
     <link href="<?php echo C('RES_DOMAIN');?>/Public/css/datepicker.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="<?php echo C('RES_DOMAIN');?>/Public/css/basic.css" rel="stylesheet" />
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.js"></script>
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-1.8.3.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
@@ -25,9 +24,9 @@
 <!-- METISMENU SCRIPTS -->
 <script src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery.metisMenu.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/common.js"></script>
 <script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/msDialog.js"></script>
+<script type="text/javascript" src="<?php echo C('RES_DOMAIN');?>/Public/js/jquery-ui-datepicker.js"></script>
 </head>
 <body>
 <div style="margin: -20px 0px;;font-family: Microsoft YaHei;">
@@ -38,29 +37,17 @@
                     <a class="navbar-brand" href="index.html">评估系统</a>
                 </div>
             </div>
-
             <div class="header-right">
-                <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
-
+                <a href="/user" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
+            </div>
             </div>
         </nav>
     </header>
-    <nav class="navbar-default navbar-side col-md-2" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-            <!--li>
-                <a href="/questionnaire">我的评估项目</a>
-            </li-->
-            <li>
-       			<a href="/questionnaire/care" >新增被评估者</a>
-            </li>
-            <li>
-       			<a href="/questionnaire/mycare" >被评估者</a>
-            </li>
-        </ul>
+    <div class="progress" style="margin: 5% 20px">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 78%">
+        </div>
     </div>
-</nav>
     <div class="col-md-10" style="padding: 0">
         <form class="Huiform form-horizontal" id="commentForm" action="/questionnaire/jieguo" method="post">
             <input type="hidden" name="wj_name" value="疾病/治疗/康复需求评估"/>
@@ -75,7 +62,14 @@
                         <label class="col-md-4" style="margin-bottom: 15px">
                             <span class="text-left">生命体征的动态监测(10分)</span>
                         	<input type="hidden" name="pg_qa[0][question]" value="生命体征的动态监测(最高分:10分）">
-                            <input type="number" class="form-control" style="display: inline;width: 30%;margin:0 5px" name="pg_qa[0][defen]" value="" required>分
+                            <select class="form-control num" name="pg_qa[0][defen]"style="display: inline;width: 30%;margin:0 5px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[0][answer]" value="">
@@ -84,7 +78,14 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-4 " style="margin-bottom: 15px">营养状况评估(10分）
                         	<input type="hidden" name="pg_qa[1][question]" value="营养状况评估(最高分:10分）">
-                            <input type="number" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[1][defen]" value="" required>分
+                            <select class="form-control num" name="pg_qa[1][defen]"style="display: inline;width: 30%;margin:0 5px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[1][answer]" value="">
@@ -93,7 +94,14 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-4 " style="margin-bottom: 15px">中风复发风险评估(5分）
                         	<input type="hidden" name="pg_qa[2][question]" value="中风复发风险评估(最高分:5分）">
-                            <input type="number" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[2][defen]" value="" required>分
+                            <select class="form-control num" name="pg_qa[0][defen]"style="display: inline;width: 30%;margin:0 5px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[2][answer]" value="">
@@ -102,12 +110,19 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-4 " style="margin-bottom: 15px">基于药物使用需检测生命体征<br>或其它监测指标(10分）
                         	<input type="hidden" name="pg_qa[3][question]" value="基于药物使用需检测生命体征  或其它监测指标(最高分:10分）">
-                            <input type="number" class="form-control" style="display: inline;width: 30%;margin:0 15px" name="pg_qa[3][defen]" value="" required>分
+                            <select class="form-control num" name="pg_qa[3][defen]"style="display: inline;width: 30%;margin:0 5px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>分
                         </label>
                         <label class="col-md-6 control-label">备注
                             <input type="text" class="form-control" style="display: inline;width: 55%;margin:0 15px" name="pg_qa[3][answer]" value="">
                         </label>
-                    </div><input type="hidden" value="35" name="pgcount">
+                    </div>
                     <div class="form-group col-md-12">
                         <h4>治疗需要</h4>
                     </div>

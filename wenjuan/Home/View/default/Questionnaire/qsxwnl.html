@@ -6,29 +6,16 @@
                     <a class="navbar-brand" href="index.html">评估系统</a>
                 </div>
             </div>
-
             <div class="header-right">
-                <a href="#" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
-
+                <a href="/user" class="btn btn-primary" title=""><i class="glyphicon glyphicon-user"></i></a>
+                <a href="/user/logout" class="btn btn-danger" title="Logout"><i class="glyphicon glyphicon-off"></i></a>
             </div>
         </nav>
     </header>
-    <nav class="navbar-default navbar-side col-md-2" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-            <!--li>
-                <a href="/questionnaire">我的评估项目</a>
-            </li-->
-            <li>
-       			<a href="/questionnaire/care" >新增被评估者</a>
-            </li>
-            <li>
-       			<a href="/questionnaire/mycare" >被评估者</a>
-            </li>
-        </ul>
+    <div class="progress" style="margin: 5% 20px">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 64%">
+        </div>
     </div>
-</nav>
     <div class="col-md-10" style="padding: 0">
         <div class="">
             <form class="Huiform form-horizontal" id="" action="/questionnaire/jieguo" method="post">
@@ -42,53 +29,102 @@
                     <div class="form-group col-md-12">
                         <h4><strong>情绪</strong></h4>
                         <div class="col-md-12 ">对客观事物的主观态度体验是否与实际相符，能否被常人理解。
-                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[0][defen]" value="">分
-                        <input type="hidden" name="pg_qa[0][question]" value="情绪: 对客观事物的主观态度体验是否与实际相符，能否被常人理解。">
+                            <input type="hidden" name="pg_qa[0][question]" value="情绪: 对客观事物的主观态度体验是否与实际相符，能否被常人理解。">
+                            <select class="form-control num" name="pg_qa[0][defen]"style="display: inline;width: 40%;margin:0 15px 20px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">6</option>
+                                <option value="10">10</option>
+                            </select>分
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#question1">
+                                查看答案内容
+                            </button>
+                            <div class="modal fade" id="question1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul style="list-style: none;">
+                                                <li>A、情绪稳定；<strong>(正常&nbsp;0分)</strong></li>
+                                                <li>B、情绪欠稳定，但尚能被人理解；<strong>(轻度异常&nbsp;2分)</strong></li>
+                                                <li>C、无诱因，情绪变化较大；<strong>(中度异常&nbsp;6分)</strong></li>
+                                                <li>D、喜怒无常或毫无反应；<strong>(重度异常&nbsp;10分)</strong></li>
+                                                <input name="pg_qa[0][answer][]" value="A、情绪稳定；(正常&nbsp;0分)" type="hidden" />
+                                                <input name="pg_qa[0][answer][]" value="B、情绪欠稳定，但尚能被人理解；(轻度异常&nbsp;2分)" type="hidden" />
+                                                <input name="pg_qa[0][answer][]" value="C、无诱因，情绪变化较大；(中度异常&nbsp;6分)" type="hidden" />
+                                                <input name="pg_qa[0][answer][]" value="D、喜怒无常或毫无反应；(重度异常&nbsp;10分)" type="hidden" />
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul style="list-style: none;">
-                            <li>A、情绪稳定；<strong>(正常&nbsp;0分)</strong></li>
-                            <li>B、情绪欠稳定，但尚能被人理解；<strong>(轻度异常&nbsp;2分)</strong></li>
-                            <li>C、无诱因，情绪变化较大；<strong>(中度异常&nbsp;6分)</strong></li>
-                            <li>D、喜怒无常或毫无反应；<strong>(重度异常&nbsp;10分)</strong></li>
-                            <input name="pg_qa[0][answer][]" value="A、情绪稳定；(正常&nbsp;0分)" type="hidden" />
-                            <input name="pg_qa[0][answer][]" value="B、情绪欠稳定，但尚能被人理解；(轻度异常&nbsp;2分)" type="hidden" />
-                            <input name="pg_qa[0][answer][]" value="C、无诱因，情绪变化较大；(中度异常&nbsp;6分)" type="hidden" />
-                            <input name="pg_qa[0][answer][]" value="D、喜怒无常或毫无反应；(重度异常&nbsp;10分)" type="hidden" />
-                        </ul>
                     </div>
                     <div class="form-group col-md-12">
                         <h4><strong>行为</strong></h4>
                         <div class="col-md-12 ">动作行为表现有否异常。
                         <input type="hidden" name="pg_qa[1][question]" value="行为: 动作行为表现有否异常。">
-                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[1][defen]" value="">分
+                            <select class="form-control num" name="pg_qa[1][defen]"style="display: inline;width: 60%;margin:0 15px 20px">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">6</option>
+                                <option value="10">10</option>
+                            </select>分
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#question2">
+                                查看答案内容
+                            </button>
+                            <div class="modal fade" id="question2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul style="list-style: none;">
+                                                <li>A、行为正常；<strong>(正常&nbsp;0分)</strong></li>
+                                                <li>B、偶尔有异常行为，但不影响正常生活，不需要协助调适或监护；<strong>(轻度异常&nbsp;2分)</strong></li>
+                                                <li>C、经常有异常行为，影响正常生活，需要一定监护；<strong>(中度异常&nbsp;6分)</strong></li>
+                                                <li>D、经常有异常行为，严重影响正常生活，完全需要监护；<strong>(重度异常&nbsp;10分)</strong></li>
+                                                <input name="pg_qa[1][answer][]" value="A、行为正常；(正常&nbsp;0分)" type="hidden" />
+                                                <input name="pg_qa[1][answer][]" value="B、偶尔有异常行为，但不影响正常生活，不需要协助调适或监护；(轻度异常&nbsp;2分)" type="hidden" />
+                                                <input name="pg_qa[1][answer][]" value="C、经常有异常行为，影响正常生活，需要一定监护；(中度异常&nbsp;6分)" type="hidden" />
+                                                <input name="pg_qa[1][answer][]" value="D、经常有异常行为，严重影响正常生活，完全需要监护；(重度异常&nbsp;10分)" type="hidden" />
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul style="list-style: none;">
-                            <li>A、行为正常；<strong>(正常&nbsp;0分)</strong></li>
-                            <li>B、偶尔有异常行为，但不影响正常生活，不需要协助调适或监护；<strong>(轻度异常&nbsp;2分)</strong></li>
-                            <li>C、经常有异常行为，影响正常生活，需要一定监护；<strong>(中度异常&nbsp;6分)</strong></li>
-                            <li>D、经常有异常行为，严重影响正常生活，完全需要监护；<strong>(重度异常&nbsp;10分)</strong></li>
-                            <input name="pg_qa[1][answer][]" value="A、行为正常；(正常&nbsp;0分)" type="hidden" />
-                            <input name="pg_qa[1][answer][]" value="B、偶尔有异常行为，但不影响正常生活，不需要协助调适或监护；(轻度异常&nbsp;2分)" type="hidden" />
-                            <input name="pg_qa[1][answer][]" value="C、经常有异常行为，影响正常生活，需要一定监护；(中度异常&nbsp;6分)" type="hidden" />
-                            <input name="pg_qa[1][answer][]" value="D、经常有异常行为，严重影响正常生活，完全需要监护；(重度异常&nbsp;10分)" type="hidden" />
-                        </ul>
+
                     </div>
                     <div class="form-group col-md-12">
                         <h4><strong>沟通能力</strong></h4>
                         <div class="col-md-12">在交流中能否互相理解。
                         <input type="hidden" name="pg_qa[2][question]" value="沟通能力: 在交流中能否互相理解。">
-                        <input type="number" class="form-control num" style="display: inline;width: 20%;margin:0 15px" name="pg_qa[2][defen]" value="">分
+                        <select class="form-control num" name="pg_qa[2][defen]"style="display: inline;width: 60%;margin:0 15px 20px">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>分
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#question3">
+                                查看答案内容
+                            </button>
+                            <div class="modal fade" id="question3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul style="list-style: none;">
+                                                <li>A、理解准确，表达清晰；<strong>(正常&nbsp;0分)</strong></li>
+                                                <li>B、需提示才能听懂、简单表达；<strong>(中度异常&nbsp;1分)</strong></li>
+                                                <li>C、交流困难，不能表达和理解；<strong>(重度异常&nbsp;2分)</strong></li>
+                                                <input name="pg_qa[2][answer][]" value="A、理解准确，表达清晰；(正常&nbsp;0分)" type="hidden" />
+                                                <input name="pg_qa[2][answer][]" value="B、需提示才能听懂、简单表达；(中度异常&nbsp;1分)" type="hidden" />
+                                                <input name="pg_qa[2][answer][]" value="C、交流困难，不能表达和理解；(重度异常&nbsp;2分)" type="hidden" />
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul style="list-style: none;">
-                            <li>A、理解准确，表达清晰；<strong>(正常&nbsp;0分)</strong></li>
-                            <li>B、需提示才能听懂、简单表达；<strong>(中度异常&nbsp;1分)</strong></li>
-                            <li>C、交流困难，不能表达和理解；<strong>(重度异常&nbsp;2分)</strong></li>
-                            <input name="pg_qa[2][answer][]" value="A、理解准确，表达清晰；(正常&nbsp;0分)" type="hidden" />
-                            <input name="pg_qa[2][answer][]" value="B、需提示才能听懂、简单表达；(中度异常&nbsp;1分)" type="hidden" />
-                            <input name="pg_qa[2][answer][]" value="C、交流困难，不能表达和理解；(重度异常&nbsp;2分)" type="hidden" />
-                        </ul>
+
                     </div>
-                    <div class="form-group col-md-12"><input type="hidden" value="22" name="pgcount">
+                    <div class="form-group col-md-12">
                         <p class="duoxuan">评分标准：0 - 1分情绪行为正常&nbsp;&nbsp;<br>2 - 5分情绪行为轻度异常&nbsp;&nbsp;<br> 6 - 14分情绪行为中度异常&nbsp;&nbsp;<br>15分或以上情绪行为重度异常
                         </p>
                     </div>
