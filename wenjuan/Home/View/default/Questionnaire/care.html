@@ -91,9 +91,13 @@
                             <label class="col-md-3 col-xs-5 control-label">证件类型：</label>
                             <div class="col-md-8 col-xs-7">
                                 <select class="form-control" name="credentials_type">
+                                    <option value="身份证">身份证</option>
                                     <option value="军人证">军人证</option>
                                     <option value="残疾人证">残疾人证</option>
                                     <option value="老人证">老人证</option>
+                                    <option value="护照">护照</option>
+                                    <option value="台胞证">台胞证</option>
+                                    <option value="回乡证">回乡证</option>
                                     <option value="其他">其他</option>
                                 </select>
                             </div>
@@ -101,7 +105,7 @@
                         <div class="form-group col-md-6">
                             <label class="col-md-3 col-xs-5 control-label">证件号：</label>
                             <div class="col-md-8 col-xs-7">
-                                <input type="text" name="credentials_no" class="form-control" required data-rule-idCard="true" data-msg-required="身份证格式出错">
+                                <input type="text" name="credentials_no" class="form-control" required >
                             </div>
                         </div>
                     </div>
@@ -526,16 +530,16 @@
             buttonImage: "{:C('RES_DOMAIN')}__IMG__/calendar.gif",
             buttonImageOnly: true,
             dateFormat: 'yy-mm-dd',
-            yearRange: '1930:2000',
-            defaultDate:'1930-01-01'
+            yearRange: '1940:2000',
+            defaultDate:'1940-01-01'
         });
         $("#date_2").datepicker({
             showOn: "button",
             buttonImage: "{:C('RES_DOMAIN')}__IMG__/calendar.gif",
             buttonImageOnly: true,
             dateFormat: 'yy-mm-dd',
-            yearRange: '1930:2000',
-            defaultDate:'1930-01-01'
+            yearRange: '1970:2010',
+            defaultDate:'1970-01-01'
         });
     });
 </script>
